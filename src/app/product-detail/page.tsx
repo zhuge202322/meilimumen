@@ -178,7 +178,7 @@ function ProductDetailContent() {
               <div className="font-body-md text-lg text-[#4A4A4A] leading-relaxed mb-6 italic border-l-4 border-[#BA1A1A] pl-4">
                 {stripHtml(product.short_description) || 'Premium architectural element.'}
               </div>
-              <div className="font-body-md text-sm text-[#4A4A4A] leading-relaxed space-y-4" dangerouslySetContent={{__html: product.description || descText}}></div>
+              <div className="font-body-md text-sm text-[#4A4A4A] leading-relaxed space-y-4" dangerouslySetInnerHTML={{__html: product.description || descText}}></div>
             </div>
 
             <form className="space-y-10">
