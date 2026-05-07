@@ -45,6 +45,24 @@ function ProductDetailContent() {
       fetch(`/api/wp/?rest_route=/wc/store/products`).then(res => res.ok ? res.json() : [])
     ])
       .then(([productData, allProducts]) => {
+        // Rewrite image URLs to go through Next.js proxy to bypass mixed content / CORS issues
+        if (productData?.images) {
+          productData.images = productData.images.map((img: any) => ({
+            ...img,
+            src: img.src.replace('http://45.145.229.20:2656', '/api/wp')
+          }));
+        }
+        if (Array.isArray(allProducts)) {
+          allProducts.forEach((p: any) => {
+            if (p.images) {
+              p.images = p.images.map((img: any) => ({
+                ...img,
+                src: img.src.replace('http://45.145.229.20:2656', '/api/wp')
+              }));
+            }
+          });
+        }
+
         setProduct(productData);
         
         // Calculate Related Products

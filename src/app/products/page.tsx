@@ -78,7 +78,7 @@ function ProductCatalog() {
           id: p.id,
           name: p.name,
           desc: stripHtml(p.short_description) || stripHtml(p.description) || 'Premium architectural elements.',
-          img: p.images?.[0]?.src || '/images/products/门/13.png',
+          img: p.images?.[0]?.src ? p.images[0].src.replace('http://45.145.229.20:2656', '/api/wp') : '/images/products/门/13.png',
           categories: p.categories || []
         }));
 
@@ -184,6 +184,7 @@ function ProductCatalog() {
                     src={product.img} 
                     alt={product.name} 
                     className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110 opacity-70 group-hover:opacity-20" 
+                    loading="lazy"
                   />
                   
                   {/* Default State: Bottom Centered Title */}

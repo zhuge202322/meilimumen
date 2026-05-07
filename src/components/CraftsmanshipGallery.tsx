@@ -97,7 +97,9 @@ export default function CraftsmanshipGallery() {
       
       {categories.map((category, index) => {
         const layoutClass = LAYOUT_CLASSES[index % LAYOUT_CLASSES.length];
-        const imageUrl = category.image?.src || "/images/products/柜子/5.png"; // Fallback image if none
+        const imageUrl = category.image?.src 
+          ? category.image.src.replace('http://45.145.229.20:2656', '/api/wp') 
+          : "/images/products/柜子/5.png"; // Fallback image if none
         
         return (
           <Link 
