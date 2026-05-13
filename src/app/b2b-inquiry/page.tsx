@@ -84,11 +84,11 @@ export default function B2BInquiry() {
                   </div>
                   <div>
                     <label className="font-label-caps text-[10px] text-[#1A1A1A] font-bold uppercase tracking-widest block mb-3" htmlFor="email">Business Email *</label>
-                    <input className="w-full bg-[#F5F5F5] border border-transparent focus:border-[#BA1A1A] p-4 focus:ring-0 transition-all font-body-md text-[#1A1A1A] outline-none rounded-none" id="email" name="email" placeholder="contact@company.com" required type="email"/>
+                    <input className="w-full bg-[#F5F5F5] border border-transparent focus:border-[#BA1A1A] p-4 focus:ring-0 transition-all font-body-md text-[#1A1A1A] outline-none rounded-none" id="email" name="email" placeholder="" required type="email"/>
                   </div>
                   <div>
                     <label className="font-label-caps text-[10px] text-[#1A1A1A] font-bold uppercase tracking-widest block mb-3" htmlFor="phone">Phone Number</label>
-                    <input className="w-full bg-[#F5F5F5] border border-transparent focus:border-[#BA1A1A] p-4 focus:ring-0 transition-all font-body-md text-[#1A1A1A] outline-none rounded-none" id="phone" name="phone" placeholder="+86 19017111088" type="tel"/>
+                    <input className="w-full bg-[#F5F5F5] border border-transparent focus:border-[#BA1A1A] p-4 focus:ring-0 transition-all font-body-md text-[#1A1A1A] outline-none rounded-none" id="phone" name="phone" placeholder="" type="tel"/>
                   </div>
                 </div>
               </fieldset>
