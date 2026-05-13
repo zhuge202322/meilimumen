@@ -49,7 +49,7 @@ export default function GlobalPresence() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-section-gap px-margin-edge bg-surface-container-low overflow-hidden">
+    <section ref={containerRef} className="py-16 md:py-section-gap px-4 md:px-margin-edge bg-surface-container-low overflow-hidden">
       <div className="max-w-container-max mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           

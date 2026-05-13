@@ -13,7 +13,7 @@ export default function Home() {
         <HeroCarousel />
 
         {/* Categories Section (Bento Grid) */}
-        <section className="py-section-gap px-margin-edge bg-surface">
+        <section className="py-16 md:py-section-gap px-4 md:px-margin-edge bg-surface">
           <div className="max-w-container-max mx-auto">
             <div className="mb-16 text-center">
               <h2 className="font-headline-lg text-headline-lg text-black mb-2">Our Craftsmanship</h2>
@@ -26,7 +26,7 @@ export default function Home() {
         </section>
 
         {/* Customization Service Component */}
-        <section className="relative py-section-gap px-margin-edge bg-surface-container-low group">
+        <section className="relative py-16 md:py-section-gap px-4 md:px-margin-edge bg-surface-container-low group">
           {/* Top Divider Progress Bar */}
           <div className="absolute top-0 left-0 w-full h-[10px] bg-primary/10 overflow-hidden">
             <div className="w-full h-full bg-[#BA1A1A] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[2000ms] ease-out"></div>
@@ -104,7 +104,7 @@ export default function Home() {
         {/* Global Presence Section with Scroll Animations */}
         <GlobalPresence />
 
-        <section className="relative py-section-gap px-margin-edge bg-[#050505] overflow-hidden">
+        <section className="relative py-16 md:py-section-gap px-4 md:px-margin-edge bg-[#050505] overflow-hidden">
           {/* Dynamic Ambient Background Layer */}
           <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
             <img 
