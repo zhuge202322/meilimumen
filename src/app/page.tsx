@@ -16,7 +16,7 @@ export default function Home() {
         <section className="py-section-gap px-margin-edge bg-surface">
           <div className="max-w-container-max mx-auto">
             <div className="mb-16 text-center">
-              <h2 className="font-headline-lg text-headline-lg text-primary mb-2">Our Craftsmanship</h2>
+              <h2 className="font-headline-lg text-headline-lg text-black mb-2">Our Craftsmanship</h2>
               <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Discover our range of meticulously crafted solid wood elements, designed to elevate the architectural integrity of your spaces.</p>
             </div>
             
@@ -37,7 +37,7 @@ export default function Home() {
               <span className="font-label-caps text-label-caps text-secondary tracking-widest mb-4 block uppercase">
                 Our Service
               </span>
-              <h2 className="font-headline-lg text-headline-lg text-primary mb-6">Uncompromising Quality & Precision</h2>
+              <h2 className="font-headline-lg text-headline-lg text-black mb-6">Uncompromising Quality & Precision</h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
                 At Beautiful Sunshine, customization is more than a service—it is a meticulous engineering process. 
                 From raw timber selection to the final coat of protective finish, we subject every bespoke order to 

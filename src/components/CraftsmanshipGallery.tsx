@@ -13,10 +13,10 @@ interface Category {
 }
 
 const LAYOUT_CLASSES = [
-  "col-span-1 md:col-span-5 h-[400px]",
-  "col-span-1 md:col-span-7 h-[500px] md:mt-12 delay-[150ms]",
-  "col-span-1 md:col-span-8 h-[450px] md:-mt-16 delay-[300ms]",
-  "col-span-1 md:col-span-4 h-[520px] delay-[450ms]"
+  "col-span-1 md:col-span-5 h-[250px] md:h-[400px]",
+  "col-span-1 md:col-span-7 h-[250px] md:h-[500px] md:mt-12 delay-[150ms]",
+  "col-span-1 md:col-span-8 h-[250px] md:h-[450px] md:-mt-16 delay-[300ms]",
+  "col-span-1 md:col-span-4 h-[250px] md:h-[520px] delay-[450ms]"
 ];
 
 export default function CraftsmanshipGallery() {
@@ -93,7 +93,7 @@ export default function CraftsmanshipGallery() {
   }
 
   return (
-    <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+    <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
       
       {categories.map((category, index) => {
         const layoutClass = LAYOUT_CLASSES[index % LAYOUT_CLASSES.length];
@@ -109,8 +109,8 @@ export default function CraftsmanshipGallery() {
           >
             <img alt={category.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105" src={imageUrl}/>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-90"></div>
-            <div className="absolute bottom-0 left-0 p-8 w-full z-10">
-              <h3 className="font-headline-md text-headline-md text-white mb-1">{category.name}</h3>
+            <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full z-10">
+              <h3 className="font-headline-md text-2xl md:text-4xl tracking-wider uppercase text-white mb-1">{category.name}</h3>
               <div className="flex items-center gap-2 overflow-hidden">
                 <span className="font-label-caps text-label-caps text-white/80 whitespace-nowrap">View Collection</span>
                 <div className="h-[2px] bg-white/80 flex-grow origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"></div>

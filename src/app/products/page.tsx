@@ -34,6 +34,7 @@ function stripHtml(html: string) {
 function ProductCatalog() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get('category');
+  const searchParam = searchParams.get('search');
   
   const [pageTitle, setPageTitle] = useState('Products Catalog');
   const [displayProducts, setDisplayProducts] = useState<Product[]>([]);
@@ -88,6 +89,14 @@ function ProductCatalog() {
             p.categories.some(c => c.slug === categoryParam)
           );
           setDisplayProducts(filtered);
+        } else if (searchParam) {
+          setPageTitle(`SEARCH RESULTS FOR "${searchParam.toUpperCase()}"`);
+          const lowerQuery = searchParam.toLowerCase();
+          const filtered = formattedProducts.filter(p => 
+            p.name.toLowerCase().includes(lowerQuery) || 
+            p.desc.toLowerCase().includes(lowerQuery)
+          );
+          setDisplayProducts(filtered);
         } else {
           setPageTitle('Products Catalog');
           setDisplayProducts(formattedProducts);
@@ -100,7 +109,7 @@ function ProductCatalog() {
         setDisplayProducts([]); // Ensure we clear products on error so it doesn't crash map
         setLoading(false);
       });
-  }, [categoryParam]);
+  }, [categoryParam, searchParam]);
 
   // Pagination Logic
   const totalPages = Math.ceil(displayProducts.length / productsPerPage);
@@ -136,13 +145,19 @@ function ProductCatalog() {
                   <span className="text-[#BA1A1A] font-bold">{categoryParam.replace(/-/g, ' ')}</span>
                 </>
               )}
+              {searchParam && (
+                <>
+                  <span>/</span>
+                  <span className="text-[#BA1A1A] font-bold">Search: {searchParam}</span>
+                </>
+              )}
             </nav>
 
             <div className="space-y-10">
               {/* Category Section */}
               <div>
-                <h3 className="font-label-caps text-xs font-bold text-[#1A1A1A] mb-4 border-b border-gray-300 pb-3 uppercase tracking-widest">Collections</h3>
-                <ul className="space-y-4 text-sm text-[#4A4A4A]">
+                <h3 className="font-label-caps text-sm font-bold text-[#1A1A1A] mb-4 border-b border-gray-300 pb-3 uppercase tracking-widest">Collections</h3>
+                <ul className="space-y-4 text-lg text-[#4A4A4A]">
                   <li><Link href="/products" className={`hover:text-[#BA1A1A] transition-colors w-full text-left block ${!categoryParam ? 'font-medium text-[#BA1A1A]' : ''}`}>All Products</Link></li>
                   {categories.map(cat => (
                     <li key={cat.id}>
@@ -176,7 +191,7 @@ function ProductCatalog() {
               No products found in this category.
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
               {currentProducts.map((product) => (
                 <Link href={`/product-detail?id=${product.id}`} key={product.id} className="relative group aspect-square overflow-hidden bg-[#1A1A1A] cursor-pointer rounded-none block">
                   {/* Background Image */}

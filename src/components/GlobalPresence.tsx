@@ -59,7 +59,7 @@ export default function GlobalPresence() {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-24'
             }`}
           >
-            <h2 className="font-headline-xl text-headline-xl text-primary mb-6">Global Presence</h2>
+            <h2 className="font-headline-xl text-headline-xl text-black mb-6">Global Presence</h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
               From our roots in traditional European craftsmanship to a presence in the world's design capitals, 
               Beautiful Sunshine serves a global clientele of architects and visionaries.

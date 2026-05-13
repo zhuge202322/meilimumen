@@ -54,14 +54,14 @@ export default function HeroCarousel() {
       
       <div className="absolute inset-0 bg-gradient-to-r from-surface/80 to-transparent z-10 pointer-events-none"></div>
       
-      <div className="relative z-20 w-full max-w-container-max mx-auto">
-        <div className="max-w-2xl bg-surface/40 backdrop-blur-md p-10 rounded-lg border border-outline-variant/30 ambient-shadow">
-          <h1 className="font-headline-xl text-headline-xl text-primary mb-4 leading-tight">
+      <div className="relative z-20 w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24">
+        <div className="max-w-3xl pt-24 md:pt-0">
+          <h1 className="font-headline-xl text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-black mb-6 leading-tight drop-shadow-2xl">
             Crafting the Soul of Your Home
           </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-lg">
-            Beautiful Sunshine Building Materials – Premium Solid Wood Solutions for Doors, Windows, and Storage. Built for generations, designed for today.
-          </p>
+          <p className="font-body-lg text-lg md:text-xl text-black/90 mb-10 max-w-xl drop-shadow-md">
+              Beautiful Sunshine Building Materials – Premium Solid Wood Solutions for Doors, Windows, and Storage. Built for generations, designed for today.
+            </p>
           <div className="flex gap-4">
             <Link href="/collection">
               <button className="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 rounded ambient-shadow-hover hover:bg-primary/95 transition-all uppercase tracking-widest">
