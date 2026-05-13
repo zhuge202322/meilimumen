@@ -63,7 +63,7 @@ export default function HeroCarousel() {
               Beautiful Sunshine Building Materials – Premium Solid Wood Solutions for Doors, Windows, and Storage. Built for generations, designed for today.
             </p>
           <div className="flex gap-4">
-            <Link href="/collection">
+            <Link href="/products">
               <button className="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 rounded ambient-shadow-hover hover:bg-primary/95 transition-all uppercase tracking-widest">
                 Explore Collections
               </button>
