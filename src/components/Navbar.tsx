@@ -60,11 +60,9 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center justify-center flex-1 gap-8 font-label-lg">
           <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/">Home</Link>
           <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/products">Products</Link>
+          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/portfolio">Portfolio</Link>
           <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/about">About Us</Link>
           <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/b2b-inquiry">Inquiry</Link>
-          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/portfolio">Portfolio</Link>
-          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/cart">Cart</Link>
-          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/customization">Customization</Link>
         </div>
 
         {/* Actions (Desktop only) */}
@@ -114,10 +112,9 @@ export default function Navbar() {
         <div className="lg:hidden w-full bg-surface dark:bg-surface-dim border-t border-gray-200 dark:border-gray-800 flex flex-col p-4 space-y-4 shadow-lg absolute top-full left-0 max-h-[80vh] overflow-y-auto">
           <Link onClick={() => setMobileMenuOpen(false)} className="block py-2 text-black hover:text-[#BA1A1A] font-label-lg border-b border-gray-100" href="/">Home</Link>
           <Link onClick={() => setMobileMenuOpen(false)} className="block py-2 text-black hover:text-[#BA1A1A] font-label-lg border-b border-gray-100" href="/products">Products</Link>
+          <Link onClick={() => setMobileMenuOpen(false)} className="block py-2 text-black hover:text-[#BA1A1A] font-label-lg border-b border-gray-100" href="/portfolio">Portfolio</Link>
           <Link onClick={() => setMobileMenuOpen(false)} className="block py-2 text-black hover:text-[#BA1A1A] font-label-lg border-b border-gray-100" href="/about">About Us</Link>
           <Link onClick={() => setMobileMenuOpen(false)} className="block py-2 text-black hover:text-[#BA1A1A] font-label-lg border-b border-gray-100" href="/b2b-inquiry">Inquiry</Link>
-          <Link onClick={() => setMobileMenuOpen(false)} className="block py-2 text-black hover:text-[#BA1A1A] font-label-lg border-b border-gray-100" href="/portfolio">Portfolio</Link>
-          <Link onClick={() => setMobileMenuOpen(false)} className="block py-2 text-black hover:text-[#BA1A1A] font-label-lg border-b border-gray-100" href="/customization">Customization</Link>
         </div>
       )}
     </nav>
