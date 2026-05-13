@@ -21,7 +21,7 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <section className="relative w-full h-[calc(100vh-80px)] min-h-[600px] flex items-center justify-center px-margin-edge bg-surface-container-lowest overflow-hidden">
+    <section className="relative w-full h-[100svh] md:h-[calc(100vh-80px)] md:min-h-[600px] flex items-center justify-center px-4 md:px-margin-edge bg-surface-container-lowest overflow-hidden pt-20 md:pt-0">
       {/* Sliding and Fading Images Container */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-black">
         {images.map((src, index) => {
@@ -52,19 +52,19 @@ export default function HeroCarousel() {
         })}
       </div>
       
-      <div className="absolute inset-0 bg-gradient-to-r from-surface/80 to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-surface/90 md:from-surface/80 via-surface/40 md:via-surface/40 to-transparent z-10 pointer-events-none"></div>
       
-      <div className="relative z-20 w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24">
-        <div className="max-w-3xl pt-24 md:pt-0">
-          <h1 className="font-headline-xl text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-black mb-6 leading-tight drop-shadow-2xl">
+      <div className="relative z-20 w-full max-w-[1800px] mx-auto px-4 md:px-16 lg:px-24 h-full flex flex-col justify-end pb-24 md:justify-center md:pb-0">
+        <div className="max-w-3xl text-center md:text-left mx-auto md:mx-0">
+          <h1 className="font-headline-xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-black mb-4 md:mb-6 leading-tight drop-shadow-2xl">
             Crafting the Soul of Your Home
           </h1>
-          <p className="font-body-lg text-lg md:text-xl text-black/90 mb-10 max-w-xl drop-shadow-md">
+          <p className="font-body-lg text-base sm:text-lg md:text-xl text-black/90 mb-8 md:mb-10 max-w-xl mx-auto md:mx-0 drop-shadow-md">
               Beautiful Sunshine Building Materials – Premium Solid Wood Solutions for Doors, Windows, and Storage. Built for generations, designed for today.
             </p>
-          <div className="flex gap-4">
+          <div className="flex gap-4 justify-center md:justify-start">
             <Link href="/products">
-              <button className="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 rounded ambient-shadow-hover hover:bg-primary/95 transition-all uppercase tracking-widest">
+              <button className="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 rounded ambient-shadow-hover hover:bg-primary/95 transition-all uppercase tracking-widest w-full sm:w-auto">
                 Explore Collections
               </button>
             </Link>
