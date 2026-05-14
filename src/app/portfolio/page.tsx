@@ -6,10 +6,14 @@ import Link from 'next/link';
 // Local images generator for portfolio
 const generateLocalImages = (count: number) => {
   return Array.from({ length: count }, (_, i) => {
-    // Images are named 1.png, 2.png, ..., 40.png in the public/portfolio directory
+    // Determine file extension based on what's available
+    let ext = 'jpg';
+    if (i + 1 === 6 || i + 1 === 28) ext = 'png';
+    else if (i + 1 === 8 || i + 1 === 9) ext = 'jpeg';
+    
     return {
       id: i + 1,
-      src: `/portfolio/${i + 1}.png`,
+      src: `/portfolio/${i + 1}.${ext}`,
       title: `Project Study ${String(i + 1).padStart(3, '0')}`
     };
   });
