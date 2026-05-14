@@ -127,15 +127,15 @@ function ProductCatalog() {
       <main className="flex-grow w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24 pb-24 flex gap-12 lg:gap-20">
         
         {/* Left Sidebar Filter */}
-        <aside className="w-64 flex-shrink-0 hidden md:block">
+        <aside className="w-72 flex-shrink-0 hidden md:block">
           <div className="sticky top-[140px]">
             <div className="mb-8">
-              <h2 className="font-headline-md text-2xl text-[#1A1A1A] mb-2 uppercase tracking-wide">All Categories</h2>
-              <p className="text-[#6A6A6A] text-sm leading-relaxed">Explore our curated selection of premium architectural elements.</p>
+              <h2 className="font-headline-md text-3xl text-[#1A1A1A] mb-3 uppercase tracking-wide">All Categories</h2>
+              <p className="text-[#6A6A6A] text-base leading-relaxed">Explore our curated selection of premium architectural elements.</p>
             </div>
             
             {/* Breadcrumbs */}
-            <nav className="flex text-sm text-[#6A6A6A] mb-10 gap-2 items-center uppercase tracking-wider font-label-caps text-[10px]">
+            <nav className="flex text-sm text-[#6A6A6A] mb-10 gap-2 items-center uppercase tracking-wider font-label-caps">
               <Link className="hover:text-[#BA1A1A] transition-colors" href="/">Home</Link>
               <span>/</span>
               <span className="text-[#1A1A1A] font-bold">Products</span>
@@ -156,8 +156,8 @@ function ProductCatalog() {
             <div className="space-y-10">
               {/* Category Section */}
               <div>
-                <h3 className="font-label-caps text-sm font-bold text-[#1A1A1A] mb-4 border-b border-gray-300 pb-3 uppercase tracking-widest">Collections</h3>
-                <ul className="space-y-4 text-lg text-[#4A4A4A]">
+                <h3 className="font-label-caps text-base font-bold text-[#1A1A1A] mb-5 border-b border-gray-300 pb-3 uppercase tracking-widest">Collections</h3>
+                <ul className="space-y-4 text-xl text-[#4A4A4A]">
                   <li><Link href="/products" className={`hover:text-[#BA1A1A] transition-colors w-full text-left block ${!categoryParam ? 'font-medium text-[#BA1A1A]' : ''}`}>All Products</Link></li>
                   {categories.map(cat => (
                     <li key={cat.id}>
@@ -174,9 +174,9 @@ function ProductCatalog() {
 
         {/* Right Product Grid Content */}
         <section className="flex-grow">
-          <div className="flex justify-between items-end mb-8 border-b border-gray-300 pb-4">
-            <h1 className="font-headline-md text-2xl text-[#1A1A1A] uppercase tracking-widest">{pageTitle}</h1>
-            <div className="text-[#6A6A6A] text-xs font-label-caps tracking-widest uppercase">
+          <div className="flex justify-between items-end mb-8 border-b border-gray-300 pb-4 gap-4 flex-wrap">
+            <h1 className="font-headline-md text-3xl md:text-4xl text-[#1A1A1A] uppercase tracking-widest">{pageTitle}</h1>
+            <div className="text-[#6A6A6A] text-sm font-label-caps tracking-widest uppercase">
               Showing {displayProducts.length > 0 ? `${indexOfFirstProduct + 1}-${Math.min(indexOfLastProduct, displayProducts.length)} of ${displayProducts.length}` : '0'} results
             </div>
           </div>
@@ -204,18 +204,18 @@ function ProductCatalog() {
                   
                   {/* Default State: Bottom Centered Title */}
                   <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end justify-center transition-opacity duration-500 group-hover:opacity-0">
-                    <h3 className="text-white font-label-caps text-xs tracking-[0.2em] uppercase text-center drop-shadow-md">
+                    <h3 className="text-white font-label-caps text-base md:text-lg tracking-[0.2em] uppercase text-center drop-shadow-md">
                       {product.name}
                     </h3>
                   </div>
 
                   {/* Hover State: Centered Title + Description + Red Line */}
                   <div className="absolute inset-0 p-8 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <h3 className="text-white font-headline-md text-xl tracking-wider uppercase mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-white font-headline-md text-2xl md:text-3xl tracking-wider uppercase mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                       {product.name}
                     </h3>
                     <div className="w-0 h-[2px] bg-[#BA1A1A] mb-4 group-hover:w-12 transition-all duration-500 delay-100 ease-out"></div>
-                    <p className="text-white/80 font-body-md text-sm leading-relaxed transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 line-clamp-3">
+                    <p className="text-white/80 font-body-md text-base leading-relaxed transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 line-clamp-3">
                       {product.desc}
                     </p>
                   </div>
@@ -226,20 +226,20 @@ function ProductCatalog() {
 
           {/* Pagination */}
           {!loading && totalPages > 1 && (
-            <div className="mt-16 flex justify-center gap-2 font-label-caps text-xs">
+            <div className="mt-16 flex justify-center gap-2 font-label-caps text-sm">
               <button 
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
-                className={`w-10 h-10 flex items-center justify-center border transition-colors rounded-none ${currentPage === 1 ? 'border-gray-200 text-gray-300 cursor-not-allowed' : 'border-gray-300 text-[#1A1A1A] hover:border-[#1A1A1A]'}`}
+                className={`w-12 h-12 flex items-center justify-center border transition-colors rounded-none ${currentPage === 1 ? 'border-gray-200 text-gray-300 cursor-not-allowed' : 'border-gray-300 text-[#1A1A1A] hover:border-[#1A1A1A]'}`}
               >
-                <span className="material-symbols-outlined text-sm">chevron_left</span>
+                <span className="material-symbols-outlined text-base">chevron_left</span>
               </button>
               
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <button 
                   key={page}
                   onClick={() => handlePageChange(page)}
-                  className={`w-10 h-10 flex items-center justify-center border transition-colors rounded-none ${currentPage === page ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]' : 'border-gray-300 text-[#1A1A1A] hover:border-[#1A1A1A]'}`}
+                  className={`w-12 h-12 flex items-center justify-center border transition-colors rounded-none ${currentPage === page ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]' : 'border-gray-300 text-[#1A1A1A] hover:border-[#1A1A1A]'}`}
                 >
                   {page}
                 </button>
@@ -248,9 +248,9 @@ function ProductCatalog() {
               <button 
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className={`w-10 h-10 flex items-center justify-center border transition-colors rounded-none ${currentPage === totalPages ? 'border-gray-200 text-gray-300 cursor-not-allowed' : 'border-gray-300 text-[#1A1A1A] hover:border-[#1A1A1A]'}`}
+                className={`w-12 h-12 flex items-center justify-center border transition-colors rounded-none ${currentPage === totalPages ? 'border-gray-200 text-gray-300 cursor-not-allowed' : 'border-gray-300 text-[#1A1A1A] hover:border-[#1A1A1A]'}`}
               >
-                <span className="material-symbols-outlined text-sm">chevron_right</span>
+                <span className="material-symbols-outlined text-base">chevron_right</span>
               </button>
             </div>
           )}

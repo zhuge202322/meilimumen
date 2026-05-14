@@ -4,22 +4,22 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const slides = [
   { 
-    id: 2, 
-    src: '/img/t2.jpg', 
+    id: 1, 
+    src: '/portfolio/1.jpg', 
     title: 'Heritage Meets Precision',
-    subtitle: 'MODERN CRAFT',
+    subtitle: 'PROJECT SHOWCASE',
     desc: "Today, our master craftsmen blend traditional heritage techniques with contemporary precision, ensuring every grain tells a story of longevity and refined elegance. We don't just build furniture; we create the heirlooms of tomorrow."
   },
   { 
-    id: 3, 
-    src: '/img/t3.jpg', 
+    id: 2, 
+    src: '/portfolio/2.jpg', 
     title: 'Uncompromising Material',
     subtitle: 'NATURES FINEST',
     desc: "We source only the highest grade solid woods and sustainable materials. Every piece of timber is carefully selected, aged, and treated to ensure absolute stability and a finish that grows more beautiful with time."
   },
   { 
-    id: 4, 
-    src: '/img/t4.jpg', 
+    id: 3, 
+    src: '/portfolio/3.jpg', 
     title: 'A Legacy of Excellence',
     subtitle: 'GLOBAL PRESENCE',
     desc: "From local beginnings to international recognition, our commitment to uncompromising quality remains unchanged. We continue to push the boundaries of what is possible in architectural woodwork."

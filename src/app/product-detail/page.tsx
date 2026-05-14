@@ -127,7 +127,7 @@ function ProductDetailContent() {
       <main className="flex-grow w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24 pb-24">
         
         {/* Breadcrumbs */}
-        <nav className="flex text-sm text-[#6A6A6A] mb-10 gap-2 items-center uppercase tracking-wider font-label-caps text-[10px] flex-wrap">
+        <nav className="flex text-sm text-[#6A6A6A] mb-10 gap-2 items-center uppercase tracking-wider font-label-caps flex-wrap">
           <Link className="hover:text-[#BA1A1A] transition-colors" href="/">Home</Link>
           <span>/</span>
           <Link className="hover:text-[#BA1A1A] transition-colors" href="/products">Products</Link>
@@ -185,18 +185,18 @@ function ProductDetailContent() {
           <div className="lg:col-span-5 flex flex-col">
             <div className="mb-10">
               {mainCategory && (
-                <div className="font-label-caps text-xs text-[#BA1A1A] tracking-[0.2em] uppercase mb-4">
+                <div className="font-label-caps text-sm text-[#BA1A1A] tracking-[0.2em] uppercase mb-4">
                   {mainCategory.name}
                 </div>
               )}
-              <h1 className="font-headline-md text-4xl lg:text-5xl text-[#1A1A1A] uppercase tracking-wide leading-tight mb-4">
+              <h1 className="font-headline-md text-4xl lg:text-6xl text-[#1A1A1A] uppercase tracking-wide leading-tight mb-4">
                 {product.name}
               </h1>
               {/* Short Description Added Here */}
-              <div className="font-body-md text-lg text-[#4A4A4A] leading-relaxed mb-6 italic border-l-4 border-[#BA1A1A] pl-4">
+              <div className="font-body-md text-xl text-[#4A4A4A] leading-relaxed mb-6 italic border-l-4 border-[#BA1A1A] pl-4">
                 {stripHtml(product.short_description) || 'Premium architectural element.'}
               </div>
-              <div className="font-body-md text-sm text-[#4A4A4A] leading-relaxed space-y-4" dangerouslySetInnerHTML={{__html: product.description || descText}}></div>
+              <div className="font-body-md text-base text-[#4A4A4A] leading-relaxed space-y-4" dangerouslySetInnerHTML={{__html: product.description || descText}}></div>
             </div>
 
             <form className="space-y-10">
@@ -204,10 +204,10 @@ function ProductDetailContent() {
               
               {/* Dual CTAs */}
               <div className="flex flex-col space-y-4 pt-8">
-                <button onClick={handleAddToCart} className="w-full bg-[#1A1A1A] text-white py-5 font-label-caps text-xs uppercase tracking-widest flex items-center justify-center space-x-3 hover:bg-[#BA1A1A] transition-colors duration-300 rounded-none" type="button">
+                <button onClick={handleAddToCart} className="w-full bg-[#1A1A1A] text-white py-5 font-label-caps text-sm uppercase tracking-widest flex items-center justify-center space-x-3 hover:bg-[#BA1A1A] transition-colors duration-300 rounded-none" type="button">
                   <span>Add to Cart — {priceDisplay}</span>
                 </button>
-                <Link href="/b2b-inquiry" className="w-full border border-[#1A1A1A] text-[#1A1A1A] py-5 font-label-caps text-xs uppercase tracking-widest flex items-center justify-center space-x-3 hover:bg-[#1A1A1A] hover:text-white transition-colors duration-300 bg-transparent rounded-none block text-center">
+                <Link href="/b2b-inquiry" className="w-full border border-[#1A1A1A] text-[#1A1A1A] py-5 font-label-caps text-sm uppercase tracking-widest flex items-center justify-center space-x-3 hover:bg-[#1A1A1A] hover:text-white transition-colors duration-300 bg-transparent rounded-none block text-center">
                   <span>Request Custom Quote</span>
                 </Link>
               </div>
@@ -217,22 +217,22 @@ function ProductDetailContent() {
 
         {/* Technical Specs Section (Dark Theme for Contrast) */}
         <section className="bg-[#050505] text-white p-12 lg:p-20 mb-24 rounded-none border border-white/10">
-          <h2 className="font-headline-md text-2xl uppercase tracking-widest mb-12 border-b border-white/20 pb-4">Technical Specifications</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 font-body-md text-sm">
+          <h2 className="font-headline-md text-3xl md:text-4xl uppercase tracking-widest mb-12 border-b border-white/20 pb-4">Technical Specifications</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 font-body-md text-base">
             <div>
-              <h3 className="font-label-caps text-[10px] text-[#BA1A1A] tracking-widest uppercase mb-2">Core Material</h3>
+              <h3 className="font-label-caps text-sm text-[#BA1A1A] tracking-widest uppercase mb-2">Core Material</h3>
               <p className="text-white/70">Solid engineered material for extreme environmental stability and resistance.</p>
             </div>
             <div>
-              <h3 className="font-label-caps text-[10px] text-[#BA1A1A] tracking-widest uppercase mb-2">Surface Finish</h3>
+              <h3 className="font-label-caps text-sm text-[#BA1A1A] tracking-widest uppercase mb-2">Surface Finish</h3>
               <p className="text-white/70">Premium hand-selected surface, treated for maximum durability.</p>
             </div>
             <div>
-              <h3 className="font-label-caps text-[10px] text-[#BA1A1A] tracking-widest uppercase mb-2">Hardware Compatibility</h3>
+              <h3 className="font-label-caps text-sm text-[#BA1A1A] tracking-widest uppercase mb-2">Hardware Compatibility</h3>
               <p className="text-white/70">Pre-routed and compatible with heavy-duty industry standard hardware.</p>
             </div>
             <div>
-              <h3 className="font-label-caps text-[10px] text-[#BA1A1A] tracking-widest uppercase mb-2">Quality Rating</h3>
+              <h3 className="font-label-caps text-sm text-[#BA1A1A] tracking-widest uppercase mb-2">Quality Rating</h3>
               <p className="text-white/70">Meets and exceeds CE standards for premium commercial and residential environments.</p>
             </div>
           </div>
@@ -242,8 +242,8 @@ function ProductDetailContent() {
         {relatedProducts.length > 0 && (
           <section className="border-t border-gray-300 pt-16">
             <div className="flex justify-between items-end mb-10">
-              <h2 className="font-headline-md text-2xl text-[#1A1A1A] uppercase tracking-widest">Curated Pairings</h2>
-              <Link href="/products" className="text-xs font-label-caps tracking-widest uppercase text-[#BA1A1A] hover:text-[#1A1A1A] transition-colors border-b border-[#BA1A1A] pb-1">View All</Link>
+              <h2 className="font-headline-md text-3xl md:text-4xl text-[#1A1A1A] uppercase tracking-widest">Curated Pairings</h2>
+              <Link href="/products" className="text-sm font-label-caps tracking-widest uppercase text-[#BA1A1A] hover:text-[#1A1A1A] transition-colors border-b border-[#BA1A1A] pb-1">View All</Link>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -260,17 +260,17 @@ function ProductDetailContent() {
                     
                     {/* Default State: Bottom Centered Title */}
                     <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end justify-center transition-opacity duration-500 group-hover:opacity-0">
-                      <h3 className="text-white font-label-caps text-xs tracking-[0.2em] uppercase text-center drop-shadow-md">
+                      <h3 className="text-white font-label-caps text-base md:text-lg tracking-[0.2em] uppercase text-center drop-shadow-md">
                         {rel.name}
                       </h3>
                     </div>
 
                     {/* Hover State: Centered Title + Description + Red Line */}
                     <div className="absolute inset-0 p-8 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <h3 className="text-white font-headline-md text-xl tracking-wider uppercase mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <h3 className="text-white font-headline-md text-2xl md:text-3xl tracking-wider uppercase mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                         {rel.name}
                       </h3>
-                      <p className="text-white/80 font-body-md text-xs leading-relaxed transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100 line-clamp-3">
+                      <p className="text-white/80 font-body-md text-base leading-relaxed transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100 line-clamp-3">
                         {relDesc}
                       </p>
                       <div className="mt-6 w-8 h-[2px] bg-[#BA1A1A] transition-all duration-700 w-0 group-hover:w-8 delay-300"></div>

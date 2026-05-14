@@ -7,15 +7,15 @@ export default function Footer() {
         
         {/* Column 1: Brand */}
         <div className="col-span-1">
-          <h2 className="font-headline-md text-xl lg:text-2xl mb-6 uppercase leading-snug">
-            Beautiful Sunshine<br/>Building Materials
-          </h2>
+          <Link href="/">
+            <img src="/logo.png" alt="BrySun Logo" className="h-12 w-auto mb-6" />
+          </Link>
           <p className="font-body-md text-sm text-[#4A4A4A] max-w-xs leading-relaxed">
             Quality Wooden Doors & Custom Home Solutions.
           </p>
         </div>
 
-        {/* Column 2: Quick Links */}
+        {/* Column 2: Quick Links & Policies */}
         <div className="col-span-1">
           <h4 className="font-label-caps text-xs font-bold mb-6 uppercase tracking-wider">Quick Links</h4>
           <ul className="grid grid-cols-2 gap-x-4 gap-y-4 font-body-md text-sm text-[#4A4A4A]">
@@ -23,28 +23,40 @@ export default function Footer() {
               <Link className="hover:text-[#BA1A1A] transition-colors" href="/">Home</Link>
             </li>
             <li>
-              <Link className="hover:text-[#BA1A1A] transition-colors" href="/products">Products</Link>
-            </li>
-            <li>
-              <Link className="hover:text-[#BA1A1A] transition-colors" href="/customization">Customization</Link>
-            </li>
-            <li>
               <Link className="hover:text-[#BA1A1A] transition-colors" href="/about">About Us</Link>
             </li>
             <li>
-              <Link className="hover:text-[#BA1A1A] transition-colors" href="/b2b-inquiry">Inquiry</Link>
+              <Link className="hover:text-[#BA1A1A] transition-colors" href="/products">Products</Link>
             </li>
             <li>
-              <Link className="hover:text-[#BA1A1A] transition-colors" href="/cart">Cart</Link>
+              <Link className="hover:text-[#BA1A1A] transition-colors" href="/process">Our Process</Link>
+            </li>
+            <li>
+              <Link className="hover:text-[#BA1A1A] transition-colors" href="/project">Project</Link>
+            </li>
+            <li>
+              <Link className="hover:text-[#BA1A1A] transition-colors" href="/values">Values</Link>
             </li>
             <li>
               <Link className="hover:text-[#BA1A1A] transition-colors" href="/portfolio">Portfolio</Link>
             </li>
             <li>
-              <Link className="hover:text-[#BA1A1A] transition-colors" href="/faq">FAQ</Link>
+              <Link className="hover:text-[#BA1A1A] transition-colors" href="/inspections">Inspections</Link>
             </li>
             <li>
-              <Link className="hover:text-[#BA1A1A] transition-colors" href="/contact">Contact</Link>
+              <Link className="hover:text-[#BA1A1A] transition-colors" href="/b2b-inquiry">Inquiry</Link>
+            </li>
+            <li>
+              <Link className="hover:text-[#BA1A1A] transition-colors" href="/privacy-policy">Privacy Policy</Link>
+            </li>
+            <li>
+              <Link className="hover:text-[#BA1A1A] transition-colors" href="/shipping-policy">Shipping Policy</Link>
+            </li>
+            <li>
+              <Link className="hover:text-[#BA1A1A] transition-colors" href="/refund-policy">Refund Policy</Link>
+            </li>
+            <li>
+              <Link className="hover:text-[#BA1A1A] transition-colors" href="/payment-methods">Payment Methods</Link>
             </li>
           </ul>
         </div>
