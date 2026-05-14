@@ -3,21 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-// Mock data generator for portfolio
-const generateMockImages = (count: number) => {
+// Local images generator for portfolio
+const generateLocalImages = (count: number) => {
   return Array.from({ length: count }, (_, i) => {
-    // Determine orientation based on index to create a masonry effect
-    // Portrait (tall), Landscape (wide), or Square
-    const isPortrait = i % 5 === 0;
-    const isSquare = i % 3 === 0 && !isPortrait;
-    
-    let width = 800;
-    let height = isPortrait ? 1200 : (isSquare ? 800 : 600);
-    
-    // Using picsum.photos id routing to guarantee the exact same image loads every time
+    // Images are named 1.png, 2.png, ..., 40.png in the public/portfolio directory
     return {
       id: i + 1,
-      src: `https://picsum.photos/id/${(i * 10) + 10}/${width}/${height}`,
+      src: `/portfolio/${i + 1}.png`,
       title: `Project Study ${String(i + 1).padStart(3, '0')}`
     };
   });
@@ -32,8 +24,8 @@ export default function PortfolioPage() {
   const itemsPerPage = 24; // 4 columns * 6 rows
   
   useEffect(() => {
-    // Generate 50 mock images to demonstrate pagination
-    setImages(generateMockImages(50));
+    // Generate 40 local images to demonstrate pagination
+    setImages(generateLocalImages(40));
     
     // Trigger the expansion animation slightly after mount
     const timer = setTimeout(() => {
