@@ -55,7 +55,7 @@ const values = [
 
 export default function ValuesPage() {
   return (
-    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-[140px] pb-24">
+    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-10 pb-24">
       <main className="w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24">
         
         {/* Header Section */}

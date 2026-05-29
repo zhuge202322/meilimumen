@@ -76,6 +76,9 @@ const config: Config = {
         "section-gap": "120px",
         "unit": "8px"
       },
+      screens: {
+        "xs": "480px",
+      },
       fontFamily: {
         "headline-md": ["var(--font-manrope)", "sans-serif"],
         "headline-xl": ["var(--font-manrope)", "sans-serif"],

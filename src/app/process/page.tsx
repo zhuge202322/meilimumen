@@ -5,39 +5,68 @@ import Link from 'next/link';
 
 const processes = [
   {
-    title: "Estimating",
-    desc: "The process begins with a detailed estimation phase where we assess project needs, calculate material requirements, and estimate costs. This initial step ensures all aspects of the project are economically viable and resources are allocated efficiently.",
-    icon: "calculate"
+    phase: "Pre-Production",
+    icon: "design_services",
+    steps: [
+      {
+        num: "1",
+        title: "Estimating",
+        desc: "According to customers’ door styles, sizes, materials and customized requirements, the factory calculates full costs including timber, hardware, labor, packaging and logistics and provides accurate quotations. Overseas clients suffer from inflated prices."
+      },
+      {
+        num: "2",
+        title: "Design & Customization",
+        desc: "Designers customize door structure, colors and processes and produce construction and renderings based on overseas building standards, local climates and customer aesthetics. Clients worry about non-compliant designs and big gap between renderings and real products. We adapt to international standards to ensure accurate design implementation."
+      }
+    ]
   },
   {
-    title: "Design",
-    desc: "During the design phase, we collaborate with architects and engineers to develop detailed plans and specifications for the project. This phase focuses on innovation, functionality, and ensuring the design meets all regulatory standards and client expectations.",
-    icon: "design_services"
+    phase: "Material & Production",
+    icon: "precision_manufacturing",
+    steps: [
+      {
+        num: "3",
+        title: "Material Selection",
+        desc: "We strictly select imported solid wood, eco-friendly boards and branded hardware, verify material certificates, environmental indicators and moisture-proof performance, and keep samples after purchasing. Overseas clients face inferior materials, unqualified environmental standards and inconsistent materials. We ensure full material traceability and quality."
+      },
+      {
+        num: "4",
+        title: "Precision Production",
+        desc: "We conduct cutting, polishing, painting and assembly per confirmed drawings following foreign trade production standards to control flatness, tightness and paint quality. Overseas clients complain about rough workmanship, batch color difference and size errors. Standard assembly line operation ensures consistent batch product quality."
+      }
+    ]
   },
   {
-    title: "Planning and Sourcing",
-    desc: "Planning and sourcing involve strategizing the procurement timeline and selecting suppliers who meet our criteria for quality, reliability, and sustainability. This step sets the foundation for a seamless flow of materials and services throughout the project lifecycle.",
-    icon: "event_note"
+    phase: "Inspection & Logistics",
+    icon: "local_shipping",
+    steps: [
+      {
+        num: "5",
+        title: "Quality Inspection",
+        desc: "Full inspection is carried out on finished products to check size accuracy, paint integrity, hardware operation and moisture resistance, with batch sampling and official quality reports. Clients face unstrict inspection, defective mixed loading and no formal certificates. We implement 100% full inspection to eliminate defective products."
+      },
+      {
+        num: "6",
+        title: "Global Logistics",
+        desc: "We adopt shockproof and moisture-proof export packaging, arrange customs declaration documents, cooperate with forwarders for booking and loading, and track logistics in real time. Clients suffer from package damage, customs delay and opaque logistics. Reinforced packaging, efficient customs clearance and real-time tracking ensure safe and on-time delivery."
+      }
+    ]
   },
   {
-    title: "Purchasing",
-    desc: "With suppliers identified, the purchasing phase involves negotiating contracts, placing orders, and scheduling deliveries. Our aim is to secure the best prices while ensuring material availability aligns with project timelines.",
-    icon: "shopping_cart_checkout"
-  },
-  {
-    title: "Quality Control",
-    desc: "Quality control is integral to our process. We inspect all materials and services for compliance with our stringent standards. This ensures that only the highest quality products are used, reducing the risk of defects and future maintenance.",
-    icon: "fact_check"
-  },
-  {
-    title: "Logistics",
-    desc: "Our logistics team expertly manages the transportation and storage of materials. We ensure that logistics operations are streamlined to keep the project on schedule, with materials arriving safely and efficiently at their intended destinations.",
-    icon: "local_shipping"
-  },
-  {
-    title: "Customer Satisfaction",
-    desc: "Finally, we focus on ensuring customer satisfaction through every phase of the project. Regular progress reports and meetings keep clients informed and involved. Upon project completion, we conduct thorough reviews and follow-ups to guarantee that the final outcome exceeds customer expectations and fosters lasting relationships.",
-    icon: "thumb_up"
+    phase: "After-Sales & Warranty",
+    icon: "support_agent",
+    steps: [
+      {
+        num: "7",
+        title: "After-Sales Support",
+        desc: "We provide after-sales support including installation guidance, parts replacement and quality warranty after goods arrival, and respond to overseas consultations and feedback timely. Clients face delayed cross-border after-sales service and inefficient problem solving. We offer exclusive after-sales docking with all-weather response for quick solutions."
+      },
+      {
+        num: "8",
+        title: "Installation & Guidance",
+        desc: "We provide detailed cross-border installation manuals, video tutorials, and technical support to ensure seamless on-site assembly. Our products are backed by a comprehensive warranty, ensuring peace of mind and long-term durability for every home."
+      }
+    ]
   }
 ];
 
@@ -73,9 +102,9 @@ export default function ProcessPage() {
   }, []);
 
   return (
-    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-[140px] pb-24">
+    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-10 pb-24">
       <main className="w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24">
-
+        
         {/* Header */}
         <div className="flex justify-between items-end mb-16 border-b border-gray-300 pb-6">
           <div className="max-w-4xl">
@@ -83,13 +112,13 @@ export default function ProcessPage() {
               Our Process
             </h1>
             <p className="text-[#4A4A4A] text-lg leading-relaxed">
-              Supply chain management is an essential process in multifamily construction projects. It involves the coordination of various activities and suppliers to ensure timely delivery of materials and services at the right costs. The following are the processes involved in supply chain management in a multifamily construction project.
+              Our factory delivers a complete export solution for doors, custom cabinets and all types of windows. Featuring accurate quotation, international custom design, premium material selection, standardized production, full quality inspection, professional logistics and 24/7 cross-border after-sales service, we ensure reliable and worry-free purchasing for global clients.
             </p>
           </div>
         </div>
 
         {/* Vertical Process Timeline */}
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-7xl mx-auto">
           {/* Central Line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gray-300 transform md:-translate-x-1/2 hidden md:block"></div>
 
@@ -106,19 +135,19 @@ export default function ProcessPage() {
                   key={index}
                   data-index={index}
                   ref={(el) => { itemRefs.current[index] = el; }}
-                  className={`relative flex flex-col md:flex-row items-center ${isEven ? 'md:flex-row-reverse' : ''}`}
+                  className={`relative flex flex-col md:flex-row items-start ${isEven ? 'md:flex-row-reverse' : ''}`}
                 >
 
                   {/* Timeline Dot (Center) */}
-                  <div className="absolute left-8 md:left-1/2 w-12 h-12 bg-[#1A1A1A] rounded-full flex items-center justify-center transform -translate-x-1/2 z-10 hidden md:flex border-4 border-[#EBEBEB] shadow-lg">
+                  <div className="absolute left-8 md:left-1/2 w-12 h-12 bg-[#1A1A1A] rounded-full flex items-center justify-center transform -translate-x-1/2 z-10 hidden md:flex border-4 border-[#EBEBEB] shadow-lg top-10">
                     <span className="material-symbols-outlined text-white text-xl">{proc.icon}</span>
                   </div>
 
                   {/* Content Box */}
                   <div
-                    className={`w-full md:w-1/2 ${isEven ? 'md:pl-20 lg:pl-24' : 'md:pr-20 lg:pr-24'} transform transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isRevealed ? revealedClasses : hiddenClasses}`}
+                    className={`w-full md:w-1/2 ${isEven ? 'md:pl-10 lg:pl-12' : 'md:pr-10 lg:pr-12'} transform transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isRevealed ? revealedClasses : hiddenClasses}`}
                   >
-                    <div className="bg-white p-8 md:p-10 ambient-shadow-sm border-t-4 border-[#BA1A1A] group hover:-translate-y-2 transition-transform duration-500 ease-out relative">
+                    <div className="bg-white border-t-[3px] border-t-[#BA1A1A] border-l border-r border-b border-gray-200/50 shadow-[0_4px_20px_rgba(0,0,0,0.02)] p-8 md:p-10 group hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:border-gray-200 transition-all duration-500 ease-out relative text-[#1A1A1A]">
 
                       {/* Mobile Icon */}
                       <div className="md:hidden w-12 h-12 bg-[#1A1A1A] rounded-full flex items-center justify-center mb-6 shadow-md">
@@ -126,14 +155,25 @@ export default function ProcessPage() {
                       </div>
 
                       {/* Step Number Background */}
-                      <div className="absolute top-4 right-6 font-headline-xl text-6xl md:text-8xl text-gray-100 opacity-50 pointer-events-none select-none font-bold">
+                      <div className="absolute top-4 right-6 font-headline-xl text-6xl md:text-8xl text-neutral-100 pointer-events-none select-none font-bold">
                         {String(index + 1).padStart(2, '0')}
                       </div>
 
-                      <h3 className="font-headline-md text-2xl text-[#1A1A1A] mb-4 relative z-10">{proc.title}</h3>
-                      <p className="font-body-md text-[#6A6A6A] leading-relaxed relative z-10">
-                        {proc.desc}
-                      </p>
+                      <h2 className="font-headline-md text-2xl text-[#BA1A1A] mb-8 relative z-10 font-bold tracking-wider uppercase border-b border-gray-100 pb-4">{proc.phase}</h2>
+
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 relative z-10">
+                        {proc.steps.map((step, sIdx) => (
+                          <div key={sIdx} className={sIdx > 0 ? "border-t border-gray-100 pt-6 lg:border-t-0 lg:pt-0 lg:border-l lg:border-gray-100 lg:pl-8" : ""}>
+                            <h3 className="font-headline-sm text-lg text-[#1A1A1A] mb-3 font-bold flex items-center gap-2">
+                              <span className="text-sm bg-neutral-100 text-neutral-600 w-6 h-6 rounded-full flex items-center justify-center font-normal">{step.num}</span>
+                              {step.title}
+                            </h3>
+                            <p className="font-body-md text-[#555555] text-sm md:text-base leading-relaxed">
+                              {step.desc}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>

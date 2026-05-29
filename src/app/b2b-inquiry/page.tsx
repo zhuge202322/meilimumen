@@ -3,10 +3,10 @@ import Link from 'next/link';
 
 export default function B2BInquiry() {
   return (
-    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-[80px]">
+    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-0">
       
       {/* Hero Section (Dark Immersive) */}
-      <section className="relative w-full h-[50vh] min-h-[400px] bg-[#050505] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[35vh] min-h-[280px] bg-[#050505] flex items-center justify-center overflow-hidden">
         {/* Background Image with Parallax & Dark Overlay */}
         <div className="absolute inset-0 w-full h-full pointer-events-none">
           <img 
@@ -18,11 +18,11 @@ export default function B2BInquiry() {
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-8">
-          <div className="font-label-caps text-base text-[#BA1A1A] tracking-[0.3em] uppercase mb-6">Partner With Us</div>
-          <h1 className="font-headline-md text-6xl md:text-8xl text-white uppercase tracking-wide leading-tight mb-8">
+          <div className="font-label-caps text-xs text-[#BA1A1A] tracking-[0.3em] uppercase mb-3">Partner With Us</div>
+          <h1 className="font-headline-md text-4xl md:text-5xl lg:text-6xl text-white uppercase tracking-wide leading-tight mb-4">
             Wholesale & Custom<br/>Inquiries
           </h1>
-          <p className="font-body-md text-lg md:text-xl text-white/80 tracking-wide uppercase border-t border-white/20 pt-8 inline-block max-w-2xl">
+          <p className="font-body-md text-sm md:text-base text-white/80 tracking-wide uppercase border-t border-white/20 pt-4 inline-block max-w-xl">
             Submit your project details for custom architectural woodwork. Our B2B specialists typically review and respond to inquiries within 24 hours.
           </p>
         </div>
@@ -90,44 +90,9 @@ export default function B2BInquiry() {
                     <label className="font-label-caps text-sm text-[#1A1A1A] font-bold uppercase tracking-widest block mb-3" htmlFor="phone">Phone Number</label>
                     <input className="w-full bg-[#F5F5F5] border border-transparent focus:border-[#BA1A1A] p-4 focus:ring-0 transition-all font-body-md text-lg text-[#1A1A1A] outline-none rounded-none" id="phone" name="phone" placeholder="" type="tel"/>
                   </div>
-                </div>
-              </fieldset>
-
-              {/* Section 2: Project Details */}
-              <fieldset>
-                <legend className="font-headline-md text-3xl text-[#1A1A1A] uppercase tracking-widest mb-8 border-b border-gray-300 pb-4 w-full">
-                  Project Requirements
-                </legend>
-                <div className="space-y-8">
-                  <div>
-                    <label className="font-label-caps text-sm text-[#1A1A1A] font-bold uppercase tracking-widest block mb-3" htmlFor="project_name">Project Name *</label>
-                    <input className="w-full bg-[#F5F5F5] border border-transparent focus:border-[#BA1A1A] p-4 focus:ring-0 transition-all font-body-md text-lg text-[#1A1A1A] outline-none rounded-none" id="project_name" name="project_name" placeholder="e.g. The Highland Residences" required type="text"/>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <label className="font-label-caps text-sm text-[#1A1A1A] font-bold uppercase tracking-widest block mb-3" htmlFor="product_type">Product Type *</label>
-                      <div className="relative">
-                        <select className="w-full bg-[#F5F5F5] border border-transparent focus:border-[#BA1A1A] p-4 focus:ring-0 transition-all font-body-md text-lg text-[#1A1A1A] outline-none rounded-none appearance-none cursor-pointer" id="product_type" name="product_type" required>
-                          <option value="" disabled selected>Select Category</option>
-                          <option value="doors">Interior & Exterior Doors</option>
-                          <option value="windows">Aluminum Windows</option>
-                          <option value="wardrobes">Cabinets & Millwork</option>
-                          <option value="flooring">Engineered Woods & SPC Flooring</option>
-                          <option value="other">Other Architectural Elements</option>
-                        </select>
-                        <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">expand_more</span>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="font-label-caps text-sm text-[#1A1A1A] font-bold uppercase tracking-widest block mb-3" htmlFor="quantity">Estimated Quantity *</label>
-                      <input className="w-full bg-[#F5F5F5] border border-transparent focus:border-[#BA1A1A] p-4 focus:ring-0 transition-all font-body-md text-lg text-[#1A1A1A] outline-none rounded-none" id="quantity" min="1" name="quantity" placeholder="Number of units / sq meters" required type="text"/>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label className="font-label-caps text-sm text-[#1A1A1A] font-bold uppercase tracking-widest block mb-3" htmlFor="details">Project Description</label>
-                    <textarea className="w-full bg-[#F5F5F5] border border-transparent focus:border-[#BA1A1A] p-4 focus:ring-0 transition-all font-body-md text-lg text-[#1A1A1A] outline-none rounded-none resize-none" id="details" name="details" placeholder="Please describe wood species preferences, finish requirements, and any specific architectural details..." rows={4}></textarea>
+                  <div className="md:col-span-2">
+                    <label className="font-label-caps text-sm text-[#1A1A1A] font-bold uppercase tracking-widest block mb-3" htmlFor="message">Message / Inquiry Details</label>
+                    <textarea className="w-full bg-[#F5F5F5] border border-transparent focus:border-[#BA1A1A] p-4 focus:ring-0 transition-all font-body-md text-lg text-[#1A1A1A] outline-none rounded-none resize-none" id="message" name="message" placeholder="Please describe your product preferences, quantities, or custom requirements..." rows={4}></textarea>
                   </div>
                 </div>
               </fieldset>

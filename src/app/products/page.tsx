@@ -123,7 +123,7 @@ function ProductCatalog() {
   };
 
   return (
-    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-[120px]">
+    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-[88px] md:pt-[120px]">
       <main className="flex-grow w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24 pb-24 flex gap-12 lg:gap-20">
         
         {/* Left Sidebar Filter */}

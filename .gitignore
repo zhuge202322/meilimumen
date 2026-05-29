@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# User temporary unzipped docs, zip archives, and client materials
+/[Content_Types].xml
+/_rels/
+/customXml/
+/docProps/
+/word/
+*.rar
+/网站修改-5.29/

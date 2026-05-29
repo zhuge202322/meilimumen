@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 w-full z-50 flex flex-col bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-md shadow-sm transition-all duration-300 ease-in-out">
-      <div className="relative flex lg:grid lg:grid-cols-3 justify-between items-center px-4 md:px-16 lg:px-24 h-20 w-full max-w-[1800px] mx-auto">
+      <div className="relative flex justify-between items-center px-4 md:px-16 lg:px-24 h-20 w-full max-w-[1800px] mx-auto">
 
         {/* Mobile Left: Hamburger */}
         <button
@@ -56,23 +56,19 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop Left Menu (right-aligned toward logo) */}
-        <div className="hidden lg:flex items-center justify-end gap-8 font-label-lg">
-          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/about">About Us</Link>
-          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/products">Products</Link>
-          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/process">Our Process</Link>
-        </div>
-
-        {/* Desktop Centered Logo */}
-        <Link className="hidden lg:flex items-center justify-center px-4" href="/" aria-label="BrySun Home">
-          <img src="/logo.png" alt="BrySun Logo" className="h-14 w-auto" />
-        </Link>
-
-        {/* Desktop Right Menu (left-aligned toward logo) */}
-        <div className="hidden lg:flex items-center justify-start gap-8 font-label-lg">
-          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/project">Project</Link>
-          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/values">Values</Link>
-          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80" href="/b2b-inquiry">Inquiry</Link>
+        {/* Desktop Centered Menu & Logo Group */}
+        <div className="hidden lg:flex items-center justify-center gap-x-12 xl:gap-x-16 mx-auto h-full">
+          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80 font-label-lg whitespace-nowrap" href="/about">About Us</Link>
+          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80 font-label-lg whitespace-nowrap" href="/products">Products</Link>
+          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80 font-label-lg whitespace-nowrap" href="/process">Our Process</Link>
+          
+          <Link className="flex items-center justify-center px-8 xl:px-12 shrink-0" href="/" aria-label="BrySun Home">
+            <img src="/logo.png" alt="BrySun Logo" className="h-14 w-auto" />
+          </Link>
+          
+          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80 font-label-lg whitespace-nowrap" href="/project">Project</Link>
+          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80 font-label-lg whitespace-nowrap" href="/values">Values</Link>
+          <Link className="text-black hover:text-[#BA1A1A] transition-colors hover:opacity-80 font-label-lg whitespace-nowrap" href="/b2b-inquiry">Inquiry</Link>
         </div>
 
         {/* Desktop Floating Actions (absolute so they don't push menus off-center) */}

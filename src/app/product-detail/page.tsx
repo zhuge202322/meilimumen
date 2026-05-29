@@ -85,7 +85,7 @@ function ProductDetailContent() {
 
   if (loading) {
     return (
-      <div className="bg-[#EBEBEB] min-h-screen flex items-center justify-center pt-[120px]">
+      <div className="bg-[#EBEBEB] min-h-screen flex items-center justify-center pt-[85px]">
         <div className="animate-pulse w-12 h-12 border-4 border-[#BA1A1A] border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
@@ -93,7 +93,7 @@ function ProductDetailContent() {
 
   if (!product) {
     return (
-      <div className="bg-[#EBEBEB] min-h-screen flex flex-col items-center justify-center pt-[120px] font-body-md">
+      <div className="bg-[#EBEBEB] min-h-screen flex flex-col items-center justify-center pt-[85px] font-body-md">
         <h1 className="text-2xl font-headline-md uppercase tracking-widest mb-4">Product Not Found</h1>
         <Link href="/products" className="text-[#BA1A1A] hover:text-[#1A1A1A] transition-colors border-b border-[#BA1A1A] pb-1 uppercase tracking-widest font-label-caps text-xs">
           Return to Catalog
@@ -123,11 +123,11 @@ function ProductDetailContent() {
   };
 
   return (
-    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-[120px]">
+    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-[85px]">
       <main className="flex-grow w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24 pb-24">
         
         {/* Breadcrumbs */}
-        <nav className="flex text-sm text-[#6A6A6A] mb-10 gap-2 items-center uppercase tracking-wider font-label-caps flex-wrap">
+        <nav className="flex text-sm text-[#6A6A6A] mb-4 gap-2 items-center uppercase tracking-wider font-label-caps flex-wrap">
           <Link className="hover:text-[#BA1A1A] transition-colors" href="/">Home</Link>
           <span>/</span>
           <Link className="hover:text-[#BA1A1A] transition-colors" href="/products">Products</Link>
@@ -144,12 +144,12 @@ function ProductDetailContent() {
         </nav>
 
         {/* Product Hero Split */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start mb-24">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start mb-10">
           
           {/* Left: Image Gallery */}
           <div className="lg:col-span-7 flex flex-col gap-4">
             {/* Main Image */}
-            <div className="relative w-full aspect-[4/3] bg-[#1A1A1A] overflow-hidden group rounded-none">
+            <div className="relative w-full aspect-[16/11] bg-[#1A1A1A] overflow-hidden group rounded-none">
               <img 
                 alt={product.name} 
                 className="object-cover w-full h-full transition-transform duration-[2000ms] group-hover:scale-105 opacity-90" 
@@ -183,7 +183,7 @@ function ProductDetailContent() {
 
           {/* Right: Product Info & Configuration */}
           <div className="lg:col-span-5 flex flex-col">
-            <div className="mb-10">
+            <div className="mb-6">
               {mainCategory && (
                 <div className="font-label-caps text-sm text-[#BA1A1A] tracking-[0.2em] uppercase mb-4">
                   {mainCategory.name}
@@ -193,17 +193,17 @@ function ProductDetailContent() {
                 {product.name}
               </h1>
               {/* Short Description Added Here */}
-              <div className="font-body-md text-xl text-[#4A4A4A] leading-relaxed mb-6 italic border-l-4 border-[#BA1A1A] pl-4">
+              <div className="font-body-md text-lg text-[#4A4A4A] leading-relaxed mb-4 italic border-l-4 border-[#BA1A1A] pl-4">
                 {stripHtml(product.short_description) || 'Premium architectural element.'}
               </div>
               <div className="font-body-md text-base text-[#4A4A4A] leading-relaxed space-y-4" dangerouslySetInnerHTML={{__html: product.description || descText}}></div>
             </div>
 
-            <form className="space-y-10">
+            <form className="space-y-6">
               {/* Configuration Options - Removed Dimensions */}
               
               {/* Dual CTAs */}
-              <div className="flex flex-col space-y-4 pt-8">
+              <div className="flex flex-col space-y-3 pt-4">
                 <button onClick={handleAddToCart} className="w-full bg-[#1A1A1A] text-white py-5 font-label-caps text-sm uppercase tracking-widest flex items-center justify-center space-x-3 hover:bg-[#BA1A1A] transition-colors duration-300 rounded-none" type="button">
                   <span>Add to Cart — {priceDisplay}</span>
                 </button>
@@ -216,7 +216,7 @@ function ProductDetailContent() {
         </section>
 
         {/* Technical Specs Section (Dark Theme for Contrast) */}
-        <section className="bg-[#050505] text-white p-12 lg:p-20 mb-24 rounded-none border border-white/10">
+        <section className="bg-[#050505] text-white p-8 lg:p-12 mb-16 rounded-none border border-white/10">
           <h2 className="font-headline-md text-3xl md:text-4xl uppercase tracking-widest mb-12 border-b border-white/20 pb-4">Technical Specifications</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 font-body-md text-base">
             <div>

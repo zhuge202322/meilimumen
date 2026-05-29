@@ -13,22 +13,22 @@ export default function About() {
   ];
 
   const certificates = [
-    { name: 'CE Cert. - Integrated Kitchen Cabinets', file: '整体橱柜衣柜CE证书-CTGS2507160641EC  Integrated kitchen cabinets  CE Cert. - 副本.pdf' },
+    { name: 'CE Cert. - Integrated Kitchen Cabinets', file: 'bs476-cert.jpg' },
     { name: 'CE Test Report - Kitchen Cabinets EN14749', file: '整体橱柜衣柜CE证书实验报告-CTGS2507160641S  Integrated kitchen cabinets EN14749 - 副本.pdf' },
     { name: 'CE Cert. - Doors and Aluminum VCP', file: '门和铝合金CE-(72581)VCP-12235.pdf' },
-    { name: 'CE Cert. - Doors and Aluminum TCGX', file: '门和铝合金CE-TCGX25070172581(1)(1).pdf' },
+    { name: 'CE Cert. - Doors and Aluminum TCGX', file: 'ul-cert.jpg' },
   ];
 
   return (
-    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-[80px]">
+    <div className="bg-[#EBEBEB] text-[#1A1A1A] font-body-md min-h-screen flex flex-col pt-0">
       
       {/* Hero Section (Dark Immersive) */}
       <section className="relative w-full h-[70vh] min-h-[600px] bg-[#050505] flex items-center justify-center overflow-hidden">
         {/* Background Image with Parallax & Dark Overlay */}
         <div className="absolute inset-0 w-full h-full pointer-events-none">
           <img 
-            src="/images/factory/团队 (3).jpg" 
-            alt="Beautiful Sunshine Team" 
+            src="/img/new-3.png" 
+            alt="BrySun Factory" 
             className="w-full h-full object-cover opacity-40 scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-[#050505]"></div>
@@ -56,6 +56,10 @@ export default function About() {
             />
             {/* Red Accent Block */}
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[#BA1A1A] -z-10"></div>
+            {/* Factory Label */}
+            <div className="absolute top-4 right-4 bg-[#BA1A1A] text-white font-label-caps text-xs px-3 py-1.5 tracking-widest uppercase">
+              factory
+            </div>
           </div>
           
           <div className="order-1 lg:order-2 flex flex-col justify-center">
@@ -64,7 +68,7 @@ export default function About() {
             </h2>
             <div className="space-y-6 text-[#4A4A4A] font-body-md text-base leading-relaxed">
               <p>
-                <strong>BrySun</strong> takes its name from Beautiful Sunset—the warm, golden light that turns every house into a home.
+                <strong>BrySun Factory</strong> takes its name from Beautiful Sunset—the warm, golden light that turns every house into a home.
               </p>
               <p>
                 Born from a passion for craftsmanship and quality, we specialize in thoughtfully designed doors and building materials that bring durability, elegance, and natural warmth to spaces worldwide.
@@ -81,7 +85,7 @@ export default function About() {
       </section>
 
       {/* Factory & Craftsmanship Gallery (Dark Immersive) */}
-      <section className="w-full bg-[#050505] text-white py-24 md:py-32 px-8 md:px-16 lg:px-24">
+      <section className="w-full bg-[#050505] text-white py-12 md:py-32 px-8 md:px-16 lg:px-24">
         <div className="max-w-[1800px] mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <div>
@@ -97,7 +101,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-auto md:h-[800px]">
             {/* Large Hero Image */}
             <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden bg-[#1A1A1A] rounded-none">
-              <img src={factoryPhotos[0]} alt="Factory View" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+              <img src="/images/factory/equipment-3.jpg" alt="Factory View" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105 opacity-80 group-hover:opacity-100" />
             </div>
             
             {/* Top Right */}
@@ -107,30 +111,30 @@ export default function About() {
             
             {/* Bottom Right 1 */}
             <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden bg-[#1A1A1A] rounded-none h-[300px] md:h-auto">
-              <img src={factoryPhotos[2]} alt="Production" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+              <img src="/images/factory/工厂环境/1.jpg" alt="Production" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105 opacity-80 group-hover:opacity-100" />
             </div>
             
             {/* Bottom Right 2 */}
             <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden bg-[#1A1A1A] rounded-none h-[300px] md:h-auto">
-              <img src={factoryPhotos[3]} alt="Details" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+              <img src="/images/factory/工厂环境/2.jpg" alt="Details" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105 opacity-80 group-hover:opacity-100" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Certifications Section (Light) */}
-      <section className="w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24 py-24 md:py-32">
-        <div className="text-center mb-16">
+      <section className="w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24 pt-12 pb-2 md:py-32">
+        <div className="text-center mb-8 md:mb-16">
           <div className="font-label-caps text-xs text-[#BA1A1A] tracking-[0.2em] uppercase mb-4">Quality Assurance</div>
           <h2 className="font-headline-md text-3xl md:text-4xl text-[#1A1A1A] uppercase tracking-widest">Certified Excellence</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {certificates.map((cert, index) => (
-            <a 
+            <a
               key={index}
-              href={`/images/certs/${cert.file}`} 
-              target="_blank" 
+              href={`/images/certs/${cert.file}`}
+              target="_blank"
               rel="noopener noreferrer"
               className="group bg-white border border-gray-200 p-8 flex flex-col items-center text-center rounded-none hover:border-[#BA1A1A] hover:shadow-xl transition-all duration-300"
             >

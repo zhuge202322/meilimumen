@@ -24,7 +24,7 @@ export default function Home() {
                 Our Collections
               </span>
               <h2 className="font-headline-xl text-5xl md:text-7xl text-black mb-6">Products</h2>
-              <p className="font-body-lg text-xl md:text-2xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed">Discover our range of meticulously crafted solid wood elements, designed to elevate the architectural integrity of your spaces.</p>
+              <p className="font-body-lg text-xl md:text-2xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed">Explore our factory-direct collection of custom solid wood solutions, built to elevate every detail of your home.</p>
             </div>
             
             <CraftsmanshipGallery />
@@ -39,61 +39,98 @@ export default function Home() {
             <div className="w-full h-full bg-[#BA1A1A] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[2000ms] ease-out"></div>
           </div>
           <div className="max-w-container-max mx-auto">
-            <div className="mb-16 text-center max-w-3xl mx-auto">
+            <div className="mb-16 text-center max-w-4xl mx-auto">
               <span className="font-label-caps text-secondary tracking-widest mb-4 block uppercase text-lg">
-                Our Service
+                Factory Capability
               </span>
-              <h2 className="font-headline-xl text-5xl md:text-7xl text-black mb-6">Uncompromising Quality &amp; Precision</h2>
-              <p className="font-body-lg text-xl md:text-2xl text-on-surface-variant leading-relaxed">
-                At Beautiful Sunshine, customization is more than a service—it is a meticulous engineering process.
-                From raw timber selection to the final coat of protective finish, we subject every bespoke order to
-                strict multi-step quality control. We merge cutting-edge manufacturing technology with the irreplaceable
-                touch of master artisans to guarantee products that exceed CE certification standards.
+              <h2 className="font-headline-xl text-5xl md:text-7xl text-black mb-6">Uncompromising Quality & Precision</h2>
+              <p className="font-body-lg text-2xl md:text-3xl text-on-surface-variant leading-relaxed text-center">
+                At BrySun, customization is more than a service—it is a factory-controlled process. From raw timber selection to the final protective finish, every bespoke order undergoes strict multi-step quality control. We merge cutting-edge manufacturing technology with master craftsmanship to deliver products that exceed CE and international standards.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-16">
-              {/* Step 1: Material Selection */}
-              <div className="flex flex-col items-center text-center p-8 bg-surface ambient-shadow transition-transform hover:-translate-y-1 border-t-4 border-primary">
-                <div className="w-20 h-20 bg-primary-container/10 rounded-full flex items-center justify-center mb-6">
-                  <span className="material-symbols-outlined text-primary text-4xl">forest</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              {/* Card 1: Exhibition 1 */}
+              <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
+                <img 
+                  src="/images/factory/exhibition/1.jpg" 
+                  alt="Global Industry Showcase" 
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
+                  <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
+                    Exhibition 国际展会
+                  </span>
+                  <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
+                    Global Industry Showcase<br/>
+                    <span className="text-sm md:text-base text-white/75 font-normal">国际行业展会交流</span>
+                  </h3>
                 </div>
-                <h3 className="font-headline-md text-2xl md:text-3xl text-primary mb-3">Premium Materials</h3>
-                <p className="font-body-md text-base md:text-lg text-on-surface-variant">Rigorous selection of sustainably sourced solid wood and high-grade aluminum alloys.</p>
               </div>
 
-              {/* Step 2: Engineering */}
-              <div className="flex flex-col items-center text-center p-8 bg-surface ambient-shadow transition-transform hover:-translate-y-1 border-t-4 border-primary">
-                <div className="w-20 h-20 bg-primary-container/10 rounded-full flex items-center justify-center mb-6">
-                  <span className="material-symbols-outlined text-primary text-4xl">architecture</span>
+              {/* Card 2: Exhibition 2 */}
+              <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
+                <img 
+                  src="/images/factory/exhibition/2.jpg" 
+                  alt="Global Client Consultation" 
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
+                  <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
+                    Exhibition 国际展会
+                  </span>
+                  <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
+                    Global Client Consultation<br/>
+                    <span className="text-sm md:text-base text-white/75 font-normal">全球客商业务洽谈</span>
+                  </h3>
                 </div>
-                <h3 className="font-headline-md text-2xl md:text-3xl text-primary mb-3">Precision Engineering</h3>
-                <p className="font-body-md text-base md:text-lg text-on-surface-variant">Advanced CNC machining ensures absolute structural integrity and perfect joinery.</p>
               </div>
 
-              {/* Step 3: Artisanal Finish */}
-              <div className="flex flex-col items-center text-center p-8 bg-surface ambient-shadow transition-transform hover:-translate-y-1 border-t-4 border-primary">
-                <div className="w-20 h-20 bg-primary-container/10 rounded-full flex items-center justify-center mb-6">
-                  <span className="material-symbols-outlined text-primary text-4xl">imagesearch_roller</span>
+              {/* Card 3: Factory Visit 1 */}
+              <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
+                <img 
+                  src="/images/factory/visit/1.jpg" 
+                  alt="International Delegation Inspection" 
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
+                  <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
+                    Factory Visit 工厂考察
+                  </span>
+                  <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
+                    International Delegation Inspection<br/>
+                    <span className="text-sm md:text-base text-white/75 font-normal">外商莅临产线考察</span>
+                  </h3>
                 </div>
-                <h3 className="font-headline-md text-2xl md:text-3xl text-primary mb-3">Artisanal Finishing</h3>
-                <p className="font-body-md text-base md:text-lg text-on-surface-variant">Multiple rounds of hand-sanding and eco-friendly coating for a flawless tactile surface.</p>
               </div>
 
-              {/* Step 4: Quality Control */}
-              <div className="flex flex-col items-center text-center p-8 bg-surface ambient-shadow transition-transform hover:-translate-y-1 border-t-4 border-primary">
-                <div className="w-20 h-20 bg-primary-container/10 rounded-full flex items-center justify-center mb-6">
-                  <span className="material-symbols-outlined text-primary text-4xl">fact_check</span>
+              {/* Card 4: Factory Visit 2 */}
+              <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
+                <img 
+                  src="/images/factory/visit/2.jpg" 
+                  alt="Strategic Cooperation & Exchange" 
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
+                  <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
+                    Factory Visit 工厂考察
+                  </span>
+                  <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
+                    Strategic Cooperation & Exchange<br/>
+                    <span className="text-sm md:text-base text-white/75 font-normal">战略合作伙伴技术交流</span>
+                  </h3>
                 </div>
-                <h3 className="font-headline-md text-2xl md:text-3xl text-primary mb-3">Strict QC</h3>
-                <p className="font-body-md text-base md:text-lg text-on-surface-variant">Comprehensive inspection against CE standards before secure international packaging.</p>
               </div>
             </div>
 
             <div className="flex justify-center mt-12">
               <Link href="/product-detail">
                 <button className="bg-primary text-on-primary font-label-caps text-base md:text-lg px-12 py-5 ambient-shadow-hover hover:bg-primary/95 transition-all tracking-widest uppercase">
-                  Start Your Custom Order
+                  Explore our factory-direct collection of custom solid wood solutions, built to elevate every detail of your home.
                 </button>
               </Link>
             </div>

@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import FloatingContactButtons from "@/components/FloatingContactButtons";
 import { CartProvider } from "@/context/CartContext";
 
 const manrope = Manrope({
@@ -18,8 +19,13 @@ const notoSerif = Noto_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Beautiful Sunshine Building Materials",
-  description: "Quality Wooden Doors & Custom Home Solutions",
+  title: "BrySun | Global One-Stop Solutions for Custom Wood Doors, Windows & Whole-Home Joinery",
+  description: "Factory-direct manufacturer specializing in custom wood doors, windows, and whole-home joinery. Built for generations, designed for today.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -30,6 +36,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${notoSerif.variable}`}>
       <head>
+        <link rel="icon" type="image/png" href="/logo.png" />
+        <link rel="shortcut icon" href="/logo.png" />
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
         <script
           dangerouslySetInnerHTML={{
@@ -64,6 +72,7 @@ export default function RootLayout({
           </div>
           <Footer />
           <ThemeSwitcher />
+          <FloatingContactButtons />
         </CartProvider>
       </body>
     </html>
