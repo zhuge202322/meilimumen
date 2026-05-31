@@ -60,11 +60,11 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
                   <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Showroom 产品展厅
+                    Showroom
                   </span>
                   <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
                     Premium Product Showroom<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">高端家居定制产品展厅</span>
+                    <span className="text-sm md:text-base text-white/75 font-normal">Bespoke wooden doors & whole-home joinery showcase</span>
                   </h3>
                 </div>
               </div>
@@ -79,11 +79,11 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
                   <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Showroom 产品展厅
+                    Showroom
                   </span>
                   <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
                     Whole-Home Joinery Showroom<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">整家一体化工艺细节展厅</span>
+                    <span className="text-sm md:text-base text-white/75 font-normal">Immersive craftsmanship detailing & material gallery</span>
                   </h3>
                 </div>
               </div>
@@ -98,11 +98,11 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
                   <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Exhibition 国际展会
+                    Exhibition
                   </span>
                   <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
                     Global Industry Exhibition<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">国际行业大型展会交流</span>
+                    <span className="text-sm md:text-base text-white/75 font-normal">Showcasing premium custom wood doors & windows worldwide</span>
                   </h3>
                 </div>
               </div>
@@ -117,11 +117,11 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
                   <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Exhibition 国际展会
+                    Exhibition
                   </span>
                   <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
                     International Client Consultations<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">展会现场全球客商业务洽谈</span>
+                    <span className="text-sm md:text-base text-white/75 font-normal">Strategic trade consultations & negotiations with global builders</span>
                   </h3>
                 </div>
               </div>
