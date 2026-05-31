@@ -97,10 +97,17 @@ function ProductDetailContent() {
           {/* Left: Image Gallery */}
           <div className="lg:col-span-7 flex flex-col gap-4">
             {/* Main Image */}
-            <div className="relative w-full aspect-[16/11] bg-[#1A1A1A] overflow-hidden group rounded-none">
+            <div className="relative w-full aspect-[16/11] bg-white overflow-hidden group rounded-none border border-gray-200 shadow-sm">
+              {/* Blurred background to fill any gaps seamlessly with matching color tones */}
+              <img 
+                alt="" 
+                className="absolute inset-0 w-full h-full object-cover filter blur-2xl scale-110 opacity-20 select-none pointer-events-none" 
+                src={product.images[activeImageIndex] || '/images/products/门/13.png'}
+              />
+              {/* Crisp main image shown fully without cropping */}
               <img 
                 alt={product.name} 
-                className="object-cover w-full h-full transition-transform duration-[2000ms] group-hover:scale-105 opacity-90" 
+                className="absolute inset-0 w-full h-full object-contain transition-transform duration-[2000ms] group-hover:scale-105 opacity-95 group-hover:opacity-100" 
                 src={product.images[activeImageIndex] || '/images/products/门/13.png'}
               />
             </div>
