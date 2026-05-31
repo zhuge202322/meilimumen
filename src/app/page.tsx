@@ -50,78 +50,78 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-              {/* Card 1: Exhibition 1 */}
+              {/* Card 1: Showroom 1 */}
               <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
                 <img 
-                  src="/images/factory/exhibition/1.jpg" 
-                  alt="Global Industry Showcase" 
+                  src="/images/factory/exhibition/4.jpg" 
+                  alt="Premium Product Showroom" 
                   className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
                   <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Exhibition 国际展会
+                    Showroom 产品展厅
                   </span>
                   <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
-                    Global Industry Showcase<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">国际行业展会交流</span>
+                    Premium Product Showroom<br/>
+                    <span className="text-sm md:text-base text-white/75 font-normal">高端家居定制产品展厅</span>
                   </h3>
                 </div>
               </div>
 
-              {/* Card 2: Exhibition 2 */}
+              {/* Card 2: Showroom 2 */}
               <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
                 <img 
-                  src="/images/factory/exhibition/2.jpg" 
-                  alt="Global Client Consultation" 
+                  src="/images/factory/exhibition/7.jpg" 
+                  alt="Whole-Home Joinery Showroom" 
                   className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
                   <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Exhibition 国际展会
+                    Showroom 产品展厅
                   </span>
                   <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
-                    Global Client Consultation<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">全球客商业务洽谈</span>
+                    Whole-Home Joinery Showroom<br/>
+                    <span className="text-sm md:text-base text-white/75 font-normal">整家一体化工艺细节展厅</span>
                   </h3>
                 </div>
               </div>
 
-              {/* Card 3: Factory Visit 1 */}
+              {/* Card 3: Exhibition 1 */}
               <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
                 <img 
                   src="/images/factory/visit/1.jpg" 
-                  alt="International Delegation Inspection" 
+                  alt="Global Industry Exhibition" 
                   className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
                   <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Factory Visit 工厂考察
+                    Exhibition 国际展会
                   </span>
                   <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
-                    International Delegation Inspection<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">外商莅临产线考察</span>
+                    Global Industry Exhibition<br/>
+                    <span className="text-sm md:text-base text-white/75 font-normal">国际行业大型展会交流</span>
                   </h3>
                 </div>
               </div>
 
-              {/* Card 4: Factory Visit 2 */}
+              {/* Card 4: Exhibition 2 */}
               <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
                 <img 
                   src="/images/factory/visit/2.jpg" 
-                  alt="Strategic Cooperation & Exchange" 
+                  alt="International Client Consultations" 
                   className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
                   <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Factory Visit 工厂考察
+                    Exhibition 国际展会
                   </span>
                   <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
-                    Strategic Cooperation & Exchange<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">战略合作伙伴技术交流</span>
+                    International Client Consultations<br/>
+                    <span className="text-sm md:text-base text-white/75 font-normal">展会现场全球客商业务洽谈</span>
                   </h3>
                 </div>
               </div>
