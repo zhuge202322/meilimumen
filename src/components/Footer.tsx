@@ -15,7 +15,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-3 mt-6">
             <a 
-              href="https://facebook.com" 
+              href="https://www.facebook.com/?checkpoint_src=any" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="w-9 h-9 rounded-full bg-white border border-gray-300 flex items-center justify-center text-gray-600 hover:text-[#BA1A1A] hover:border-[#BA1A1A] hover:bg-[#BA1A1A]/5 transition-all duration-300 shadow-sm"
@@ -26,20 +26,18 @@ export default function Footer() {
               </svg>
             </a>
             <a 
-              href="https://instagram.com" 
+              href="https://www.linkedin.com/in/hetal-patel-9905062a9/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="w-9 h-9 rounded-full bg-white border border-gray-300 flex items-center justify-center text-gray-600 hover:text-[#BA1A1A] hover:border-[#BA1A1A] hover:bg-[#BA1A1A]/5 transition-all duration-300 shadow-sm"
-              title="Instagram"
+              title="LinkedIn"
             >
-              <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
             </a>
             <a 
-              href="https://tiktok.com" 
+              href="https://www.tiktok.com/@bs.doorwindowfacto?_r=1&_t=ZP-96oxK8KgpG2" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="w-9 h-9 rounded-full bg-white border border-gray-300 flex items-center justify-center text-gray-600 hover:text-[#BA1A1A] hover:border-[#BA1A1A] hover:bg-[#BA1A1A]/5 transition-all duration-300 shadow-sm"

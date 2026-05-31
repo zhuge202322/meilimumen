@@ -28,7 +28,7 @@ const contactChannels = [
   {
     name: 'Facebook',
     label: 'Facebook',
-    href: 'https://facebook.com',
+    href: 'https://www.facebook.com/?checkpoint_src=any',
     bgColor: 'bg-[#1877F2]', // Facebook blue
     icon: (
       <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -37,24 +37,20 @@ const contactChannels = [
     ),
   },
   {
-    name: 'Instagram',
-    label: 'Instagram',
-    href: 'https://instagram.com',
-    bgColor: 'bg-[#E1306C]', // Instagram pink/magenta
+    name: 'LinkedIn',
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/hetal-patel-9905062a9/',
+    bgColor: 'bg-[#0A66C2]', // LinkedIn blue
     icon: (
-      <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 9a9 9 0 019-9h0a9 9 0 019 9v6a9 9 0 01-9 9h0a9 9 0 01-9-9V9z" className="hidden" />
-        {/* Custom SVG Path for Instagram camera to match exact branding */}
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" strokeWidth="2" />
-        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="currentColor" strokeWidth="2" />
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
       </svg>
     ),
   },
   {
     name: 'TikTok',
     label: 'TikTok',
-    href: 'https://tiktok.com',
+    href: 'https://www.tiktok.com/@bs.doorwindowfacto?_r=1&_t=ZP-96oxK8KgpG2',
     bgColor: 'bg-[#000000]', // TikTok black
     icon: (
       <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
