@@ -4,21 +4,7 @@ import React, { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
-
-interface WcProduct {
-  id: number;
-  name: string;
-  short_description: string;
-  description: string;
-  images: { src: string }[];
-  categories: { id: number; name: string; slug: string }[];
-  prices: { price: string; currency_code: string; currency_symbol: string };
-}
-
-function stripHtml(html: string) {
-  if (!html) return '';
-  return html.replace(/<[^>]*>?/gm, '').trim();
-}
+import { localProducts, LocalProduct } from '@/data/products';
 
 function ProductDetailContent() {
   const searchParams = useSearchParams();
@@ -26,8 +12,8 @@ function ProductDetailContent() {
   const id = searchParams.get('id');
   const { addToCart } = useCart();
 
-  const [product, setProduct] = useState<WcProduct | null>(null);
-  const [relatedProducts, setRelatedProducts] = useState<WcProduct[]>([]);
+  const [product, setProduct] = useState<LocalProduct | null>(null);
+  const [relatedProducts, setRelatedProducts] = useState<LocalProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
@@ -37,50 +23,20 @@ function ProductDetailContent() {
       return;
     }
 
-    Promise.all([
-      fetch(`/api/wp/?rest_route=/wc/store/products/${id}`).then(res => {
-        if (!res.ok) throw new Error('Product not found');
-        return res.json();
-      }),
-      fetch(`/api/wp/?rest_route=/wc/store/products`).then(res => res.ok ? res.json() : [])
-    ])
-      .then(([productData, allProducts]) => {
-        // Rewrite image URLs to go through Next.js proxy to bypass mixed content / CORS issues
-        if (productData?.images) {
-          productData.images = productData.images.map((img: any) => ({
-            ...img,
-            src: img.src.replace('http://45.145.229.20:2656', '/api/wp')
-          }));
-        }
-        if (Array.isArray(allProducts)) {
-          allProducts.forEach((p: any) => {
-            if (p.images) {
-              p.images = p.images.map((img: any) => ({
-                ...img,
-                src: img.src.replace('http://45.145.229.20:2656', '/api/wp')
-              }));
-            }
-          });
-        }
+    const currentProduct = localProducts.find(p => p.id === id);
+    if (currentProduct) {
+      setProduct(currentProduct);
+      
+      // Calculate Related Products
+      const otherProducts = localProducts.filter(p => p.id !== currentProduct.id);
+      const sameCat = otherProducts.filter(p => p.categorySlug === currentProduct.categorySlug);
+      const diffCat = otherProducts.filter(p => p.categorySlug !== currentProduct.categorySlug);
+      
+      const recommendations = [...sameCat, ...diffCat].slice(0, 4);
+      setRelatedProducts(recommendations);
+    }
 
-        setProduct(productData);
-        
-        // Calculate Related Products
-        const currentCategoryId = productData.categories?.[0]?.id;
-        const otherProducts = Array.isArray(allProducts) ? allProducts.filter((p: WcProduct) => p.id !== productData.id) : [];
-        
-        const sameCat = otherProducts.filter((p: WcProduct) => p.categories?.some(c => c.id === currentCategoryId));
-        const diffCat = otherProducts.filter((p: WcProduct) => !p.categories?.some(c => c.id === currentCategoryId));
-        
-        const recommendations = [...sameCat, ...diffCat].slice(0, 4);
-        setRelatedProducts(recommendations);
-
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error(err);
-        setLoading(false);
-      });
+    setLoading(false);
   }, [id]);
 
   if (loading) {
@@ -102,22 +58,18 @@ function ProductDetailContent() {
     );
   }
 
-  const mainCategory = product.categories?.[0];
-  const priceDisplay = parseInt(product.prices?.price || '0') > 0 
-    ? `${product.prices.currency_symbol}${Number(product.prices.price) / 100}` 
-    : 'Custom Quote';
-
-  const descText = stripHtml(product.short_description) || stripHtml(product.description) || 'A testament to modern heritage, crafted with precision and sustainably sourced materials.';
+  const allImages = [...product.images, ...product.detailImages];
+  const priceDisplay = 'Custom Quote';
 
   const handleAddToCart = () => {
     if (!product) return;
     addToCart({
-      id: product.id,
+      id: parseInt(product.id.replace(/[^0-9]/g, '')) || 999,
       name: product.name,
-      price: parseInt(product.prices?.price || '0') / 100,
-      image: product.images[0]?.src || '/images/products/门/13.png',
+      price: 0,
+      image: product.images[0],
       quantity: 1,
-      category: mainCategory?.name || 'Uncategorized'
+      category: product.categoryName
     });
     router.push('/cart');
   };
@@ -131,14 +83,10 @@ function ProductDetailContent() {
           <Link className="hover:text-[#BA1A1A] transition-colors" href="/">Home</Link>
           <span>/</span>
           <Link className="hover:text-[#BA1A1A] transition-colors" href="/products">Products</Link>
-          {mainCategory && (
-            <>
-              <span>/</span>
-              <Link className="hover:text-[#BA1A1A] transition-colors" href={`/products?category=${mainCategory.slug}`}>
-                {mainCategory.name}
-              </Link>
-            </>
-          )}
+          <span>/</span>
+          <Link className="hover:text-[#BA1A1A] transition-colors" href={`/products?category=${product.categorySlug}`}>
+            {product.categoryName}
+          </Link>
           <span>/</span>
           <span className="text-[#1A1A1A] font-bold">{product.name}</span>
         </nav>
@@ -153,14 +101,14 @@ function ProductDetailContent() {
               <img 
                 alt={product.name} 
                 className="object-cover w-full h-full transition-transform duration-[2000ms] group-hover:scale-105 opacity-90" 
-                src={product.images[activeImageIndex]?.src || '/images/products/门/13.png'}
+                src={allImages[activeImageIndex] || '/images/products/门/13.png'}
               />
             </div>
             
             {/* Thumbnails */}
-            {product.images.length > 1 && (
-              <div className="grid grid-cols-3 gap-4">
-                {product.images.slice(0, 3).map((img, idx) => (
+            {allImages.length > 1 && (
+              <div className="grid grid-cols-6 gap-2">
+                {allImages.slice(0, 12).map((img, idx) => (
                   <div 
                     key={idx} 
                     onClick={() => setActiveImageIndex(idx)}
@@ -169,7 +117,7 @@ function ProductDetailContent() {
                     <img 
                       alt={`Thumbnail ${idx + 1}`} 
                       className="object-cover w-full h-full transition-transform duration-[1000ms] group-hover:scale-110 opacity-70 group-hover:opacity-100" 
-                      src={img.src}
+                      src={img}
                     />
                     {/* Active Indicator Line */}
                     {activeImageIndex === idx && (
@@ -184,24 +132,22 @@ function ProductDetailContent() {
           {/* Right: Product Info & Configuration */}
           <div className="lg:col-span-5 flex flex-col">
             <div className="mb-6">
-              {mainCategory && (
-                <div className="font-label-caps text-sm text-[#BA1A1A] tracking-[0.2em] uppercase mb-4">
-                  {mainCategory.name}
-                </div>
-              )}
+              <div className="font-label-caps text-sm text-[#BA1A1A] tracking-[0.2em] uppercase mb-4">
+                {product.categoryName}
+              </div>
               <h1 className="font-headline-md text-4xl lg:text-6xl text-[#1A1A1A] uppercase tracking-wide leading-tight mb-4">
                 {product.name}
               </h1>
-              {/* Short Description Added Here */}
+              {/* Short Description */}
               <div className="font-body-md text-lg text-[#4A4A4A] leading-relaxed mb-4 italic border-l-4 border-[#BA1A1A] pl-4">
-                {stripHtml(product.short_description) || 'Premium architectural element.'}
+                {product.desc}
               </div>
-              <div className="font-body-md text-base text-[#4A4A4A] leading-relaxed space-y-4" dangerouslySetInnerHTML={{__html: product.description || descText}}></div>
+              <div className="font-body-md text-base text-[#4A4A4A] leading-relaxed space-y-4">
+                <p>{product.longDesc}</p>
+              </div>
             </div>
 
             <form className="space-y-6">
-              {/* Configuration Options - Removed Dimensions */}
-              
               {/* Dual CTAs */}
               <div className="flex flex-col space-y-3 pt-4">
                 <button onClick={handleAddToCart} className="w-full bg-[#1A1A1A] text-white py-5 font-label-caps text-sm uppercase tracking-widest flex items-center justify-center space-x-3 hover:bg-[#BA1A1A] transition-colors duration-300 rounded-none" type="button">
@@ -215,7 +161,7 @@ function ProductDetailContent() {
           </div>
         </section>
 
-        {/* Technical Specs Section (Dark Theme for Contrast) */}
+        {/* Technical Specs Section */}
         <section className="bg-[#050505] text-white p-8 lg:p-12 mb-16 rounded-none border border-white/10">
           <h2 className="font-headline-md text-3xl md:text-4xl uppercase tracking-widest mb-12 border-b border-white/20 pb-4">Technical Specifications</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 font-body-md text-base">
@@ -248,12 +194,11 @@ function ProductDetailContent() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {relatedProducts.map(rel => {
-                const relDesc = stripHtml(rel.short_description) || stripHtml(rel.description) || 'Premium architectural element.';
                 return (
                   <Link href={`/product-detail?id=${rel.id}`} key={rel.id} className="relative group aspect-square overflow-hidden bg-[#1A1A1A] cursor-pointer rounded-none block">
                     {/* Background Image */}
                     <img 
-                      src={rel.images?.[0]?.src || '/images/products/门/13.png'} 
+                      src={rel.images[0]} 
                       alt={rel.name} 
                       className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110 opacity-70 group-hover:opacity-20" 
                     />
@@ -271,7 +216,7 @@ function ProductDetailContent() {
                         {rel.name}
                       </h3>
                       <p className="text-white/80 font-body-md text-base leading-relaxed transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100 line-clamp-3">
-                        {relDesc}
+                        {rel.desc}
                       </p>
                       <div className="mt-6 w-8 h-[2px] bg-[#BA1A1A] transition-all duration-700 w-0 group-hover:w-8 delay-300"></div>
                     </div>

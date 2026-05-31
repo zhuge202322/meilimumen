@@ -3,33 +3,7 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-
-interface WcCategory {
-  id: number;
-  name: string;
-  slug: string;
-}
-
-interface WcProduct {
-  id: number;
-  name: string;
-  short_description: string;
-  description: string;
-  images: { src: string }[];
-  categories: { id: number; name: string; slug: string }[];
-}
-
-interface Product {
-  id: number;
-  name: string;
-  desc: string;
-  img: string;
-}
-
-function stripHtml(html: string) {
-  if (!html) return '';
-  return html.replace(/<[^>]*>?/gm, '').trim();
-}
+import { localCategories, localProducts, LocalProduct } from '@/data/products';
 
 function ProductCatalog() {
   const searchParams = useSearchParams();
@@ -37,78 +11,37 @@ function ProductCatalog() {
   const searchParam = searchParams.get('search');
   
   const [pageTitle, setPageTitle] = useState('Products Catalog');
-  const [displayProducts, setDisplayProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<WcCategory[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [displayProducts, setDisplayProducts] = useState<LocalProduct[]>([]);
+  const categories = localCategories;
 
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 16; // 4 rows * 4 cols = 16
 
-  // Fetch Categories
+  // Filter Products
   useEffect(() => {
-    fetch('/api/wp/?rest_route=/wc/store/products/categories')
-      .then(res => res.json())
-      .then((data: WcCategory[]) => {
-        const validCategories = data.filter(c => c.slug !== 'uncategorized');
-        setCategories(validCategories);
-      })
-      .catch(console.error);
-  }, []);
-
-  // Fetch Products
-  useEffect(() => {
-    setLoading(true);
-    let url = '/api/wp/?rest_route=/wc/store/products';
+    let filtered = [...localProducts];
     
-    // We fetch all products, then filter by category slug on the client side since WP store API uses category ID
-    fetch(url)
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        return res.json();
-      })
-      .then((data: WcProduct[]) => {
-        if (!Array.isArray(data)) {
-           console.error("Expected array of products, got:", data);
-           setDisplayProducts([]);
-           setLoading(false);
-           return;
-        }
-
-        const formattedProducts = data.map(p => ({
-          id: p.id,
-          name: p.name,
-          desc: stripHtml(p.short_description) || stripHtml(p.description) || 'Premium architectural elements.',
-          img: p.images?.[0]?.src ? p.images[0].src.replace('http://45.145.229.20:2656', '/api/wp') : '/images/products/门/13.png',
-          categories: p.categories || []
-        }));
-
-        if (categoryParam) {
-          setPageTitle(categoryParam.replace(/-/g, ' ').toUpperCase() + ' COLLECTION');
-          const filtered = formattedProducts.filter(p => 
-            p.categories.some(c => c.slug === categoryParam)
-          );
-          setDisplayProducts(filtered);
-        } else if (searchParam) {
-          setPageTitle(`SEARCH RESULTS FOR "${searchParam.toUpperCase()}"`);
-          const lowerQuery = searchParam.toLowerCase();
-          const filtered = formattedProducts.filter(p => 
-            p.name.toLowerCase().includes(lowerQuery) || 
-            p.desc.toLowerCase().includes(lowerQuery)
-          );
-          setDisplayProducts(filtered);
-        } else {
-          setPageTitle('Products Catalog');
-          setDisplayProducts(formattedProducts);
-        }
-        setCurrentPage(1); // Reset to page 1 on category change
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Failed to fetch products:", err);
-        setDisplayProducts([]); // Ensure we clear products on error so it doesn't crash map
-        setLoading(false);
-      });
+    if (categoryParam) {
+      // Find the proper display name for the category
+      const matchedCategory = categories.find(c => c.slug === categoryParam);
+      const catDisplayName = matchedCategory ? matchedCategory.name : categoryParam.replace(/-/g, ' ');
+      setPageTitle(catDisplayName.toUpperCase() + ' COLLECTION');
+      filtered = filtered.filter(p => p.categorySlug === categoryParam);
+    } else if (searchParam) {
+      setPageTitle(`SEARCH RESULTS FOR "${searchParam.toUpperCase()}"`);
+      const lowerQuery = searchParam.toLowerCase();
+      filtered = filtered.filter(p => 
+        p.name.toLowerCase().includes(lowerQuery) || 
+        p.desc.toLowerCase().includes(lowerQuery) ||
+        p.longDesc.toLowerCase().includes(lowerQuery)
+      );
+    } else {
+      setPageTitle('Products Catalog');
+    }
+    
+    setDisplayProducts(filtered);
+    setCurrentPage(1); // Reset to page 1 on filter change
   }, [categoryParam, searchParam]);
 
   // Pagination Logic
@@ -182,11 +115,7 @@ function ProductCatalog() {
           </div>
 
           {/* 4x4 Grid - Straight Edges */}
-          {loading ? (
-            <div className="min-h-[400px] flex items-center justify-center">
-              <div className="animate-pulse w-12 h-12 border-4 border-[#BA1A1A] border-t-transparent rounded-full animate-spin"></div>
-            </div>
-          ) : displayProducts.length === 0 ? (
+          {displayProducts.length === 0 ? (
             <div className="min-h-[400px] flex items-center justify-center text-[#6A6A6A] font-label-caps tracking-widest uppercase">
               No products found in this category.
             </div>
@@ -196,7 +125,7 @@ function ProductCatalog() {
                 <Link href={`/product-detail?id=${product.id}`} key={product.id} className="relative group aspect-square overflow-hidden bg-[#1A1A1A] cursor-pointer rounded-none block">
                   {/* Background Image */}
                   <img 
-                    src={product.img} 
+                    src={product.images[0]} 
                     alt={product.name} 
                     className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110 opacity-70 group-hover:opacity-20" 
                     loading="lazy"
@@ -225,7 +154,7 @@ function ProductCatalog() {
           )}
 
           {/* Pagination */}
-          {!loading && totalPages > 1 && (
+          {totalPages > 1 && (
             <div className="mt-16 flex justify-center gap-2 font-label-caps text-sm">
               <button 
                 onClick={() => handlePageChange(currentPage - 1)}

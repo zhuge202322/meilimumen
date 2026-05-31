@@ -48,7 +48,7 @@ export default function B2BInquiry() {
                 </li>
                 <li>
                   <strong className="font-label-caps text-sm text-[#BA1A1A] uppercase tracking-widest block mb-2">Phone</strong>
-                  <a href="tel:+8619017111088" className="hover:text-[#BA1A1A] transition-colors text-lg">+86 19017111088 (潘丽华)</a>
+                  <a href="tel:+8619017111088" className="hover:text-[#BA1A1A] transition-colors text-lg">+86 19017111088 (潘丽华 / Lihua Pan)</a>
                 </li>
                 <li>
                   <strong className="font-label-caps text-sm text-[#BA1A1A] uppercase tracking-widest block mb-2">Headquarters</strong>

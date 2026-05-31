@@ -279,9 +279,9 @@ export default function GlobalPresence() {
                 <span className="material-symbols-outlined text-[24px]">workspace_premium</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-2xl md:text-3xl font-bold text-[#E6A23C] leading-none mb-1">21+</span>
+                <span className="text-2xl md:text-3xl font-bold text-[#E6A23C] leading-none mb-1.5">21+</span>
                 <span className="text-xs md:text-sm text-white/90 font-medium tracking-wide">
-                  Years Experience <span className="text-white/60 text-xs block md:inline md:ml-1 font-normal">年经验</span>
+                  Years Experience
                 </span>
               </div>
             </div>
@@ -292,11 +292,9 @@ export default function GlobalPresence() {
                 <span className="material-symbols-outlined text-[24px]">factory</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl md:text-2xl font-bold text-[#E6A23C] leading-tight">53,8195+Ft²</span>
-                <span className="text-xl md:text-2xl font-bold text-[#E6A23C] leading-tight mb-1">53,8195+平方英尺</span>
-                <span className="text-xs text-white/70 leading-snug">
-                  Large modern production area<br/>
-                  <span className="text-white/50 text-[11px]">现代化大型生产基地</span>
+                <span className="text-2xl md:text-3xl font-bold text-[#E6A23C] leading-none mb-1.5">538,195+ Ft²</span>
+                <span className="text-xs text-white/80 leading-normal font-medium">
+                  Large modern production area
                 </span>
               </div>
             </div>
@@ -307,10 +305,9 @@ export default function GlobalPresence() {
                 <span className="material-symbols-outlined text-[24px]">door_front</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-2xl md:text-3xl font-bold text-[#E6A23C] leading-none mb-1">1,000,000+</span>
-                <span className="text-xs text-white/80 leading-snug">
-                  Produced over one million windows & doors<br/>
-                  <span className="text-white/50 text-[11px]">生产超过一百万扇门窗</span>
+                <span className="text-2xl md:text-3xl font-bold text-[#E6A23C] leading-none mb-1.5">1,000,000+</span>
+                <span className="text-xs text-white/80 leading-normal font-medium">
+                  Produced over one million windows & doors
                 </span>
               </div>
             </div>
@@ -321,11 +318,9 @@ export default function GlobalPresence() {
                 <span className="material-symbols-outlined text-[24px]">thumb_up</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl md:text-2xl font-bold text-[#E6A23C] leading-tight">100,000+</span>
-                <span className="text-xl md:text-2xl font-bold text-[#E6A23C] leading-tight mb-1">10万+</span>
-                <span className="text-xs text-white/80 leading-snug">
-                  more than 100,000 satisfied clients<br/>
-                  <span className="text-white/50 text-[11px]">超过10万名满意客户</span>
+                <span className="text-2xl md:text-3xl font-bold text-[#E6A23C] leading-none mb-1.5">100,000+</span>
+                <span className="text-xs text-white/80 leading-normal font-medium">
+                  More than 100,000 satisfied clients
                 </span>
               </div>
             </div>

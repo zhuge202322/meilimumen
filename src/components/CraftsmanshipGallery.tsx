@@ -1,16 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
-
-interface Category {
-  id: number;
-  name: string;
-  slug: string;
-  image?: {
-    src: string;
-  } | null;
-}
+import { localCategories } from '@/data/products';
 
 const LAYOUT_CLASSES = [
   "col-span-1 md:col-span-5 h-[250px] md:h-[400px]",
@@ -21,52 +13,9 @@ const LAYOUT_CLASSES = [
 
 export default function CraftsmanshipGallery() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [loading, setLoading] = useState(true);
+  const categories = localCategories;
 
   useEffect(() => {
-    // Fetch WooCommerce categories from the remote WP instance via Next.js proxy to avoid CORS
-    fetch('/api/wp/?rest_route=/wc/store/products/categories')
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        return res.json();
-      })
-      .then((data: Category[]) => {
-        // Filter out uncategorized and limit to 4 items to match our bento grid
-        const validCategories = data.filter(c => c.slug !== 'uncategorized').slice(0, 4);
-        
-        // If we don't have enough categories, fall back to dummy data to prevent empty layout
-        if (validCategories.length < 4) {
-          const dummyData = [
-            { id: 101, name: "Interior Doors", slug: "interior-doors", image: { src: "/images/products/门/13.png" } },
-            { id: 102, name: "Wine Cabinets", slug: "wine-cabinets", image: { src: "/images/products/窗/4.png" } },
-            { id: 103, name: "Wardrobes", slug: "wardrobes", image: { src: "/images/products/柜子/5.png" } },
-            { id: 104, name: "Windows", slug: "windows", image: { src: "/images/products/门/14.png" } },
-          ];
-          // Merge fetched categories with dummy data to ensure we always have 4 items
-          const merged = [...validCategories, ...dummyData.slice(validCategories.length)].slice(0, 4);
-          setCategories(merged);
-        } else {
-          setCategories(validCategories);
-        }
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Failed to fetch categories:", err);
-        // Fallback to static data if API fails
-        setCategories([
-          { id: 101, name: "Interior Doors", slug: "interior-doors", image: { src: "/images/products/门/13.png" } },
-          { id: 102, name: "Wine Cabinets", slug: "wine-cabinets", image: { src: "/images/products/窗/4.png" } },
-          { id: 103, name: "Wardrobes", slug: "wardrobes", image: { src: "/images/products/柜子/5.png" } },
-          { id: 104, name: "Windows", slug: "windows", image: { src: "/images/products/门/14.png" } },
-        ]);
-        setLoading(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    if (loading || categories.length === 0) return;
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -86,20 +35,14 @@ export default function CraftsmanshipGallery() {
     cards?.forEach((card) => observer.observe(card));
 
     return () => observer.disconnect();
-  }, [loading, categories]);
-
-  if (loading) {
-    return <div className="min-h-[500px] flex items-center justify-center"><div className="animate-pulse w-12 h-12 border-4 border-[#BA1A1A] border-t-transparent rounded-full animate-spin"></div></div>;
-  }
+  }, [categories]);
 
   return (
     <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
       
       {categories.map((category, index) => {
         const layoutClass = LAYOUT_CLASSES[index % LAYOUT_CLASSES.length];
-        const imageUrl = category.image?.src 
-          ? category.image.src.replace('http://45.145.229.20:2656', '/api/wp') 
-          : "/images/products/柜子/5.png"; // Fallback image if none
+        const imageUrl = category.image;
         
         return (
           <Link 

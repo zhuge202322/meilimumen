@@ -112,7 +112,7 @@ export default function Contact() {
                 <span className="material-symbols-outlined text-secondary mt-1">phone</span>
                 <div>
                   <p className="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Direct Line</p>
-                  <p className="font-body-md text-body-md text-on-background">+86 19017111088 (潘丽华)</p>
+                  <p className="font-body-md text-body-md text-on-background">+86 19017111088 (潘丽华 / Lihua Pan)</p>
                 </div>
               </li>
             </ul>

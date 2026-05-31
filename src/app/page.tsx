@@ -1,10 +1,100 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import HeroCarousel from '@/components/HeroCarousel';
 import AboutUs from '@/components/AboutUs';
 import ScrollArtGallery from '@/components/ScrollArtGallery';
 import CraftsmanshipGallery from '@/components/CraftsmanshipGallery';
 import GlobalPresence from '@/components/GlobalPresence';
 import Link from 'next/link';
+
+interface CapabilityCardProps {
+  images: string[];
+  phase: string;
+  title: string;
+  descriptions: string[];
+}
+
+function CapabilityCard({ images, phase, title, descriptions }: CapabilityCardProps) {
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIdx((prev) => (prev + 1) % images.length);
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIdx((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleCardClick = () => {
+    setCurrentIdx((prev) => (prev + 1) % images.length);
+  };
+
+  return (
+    <div 
+      onClick={handleCardClick}
+      className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group hover:shadow-xl transition-shadow cursor-pointer border border-gray-200 select-none"
+    >
+      {/* Images with transition */}
+      {images.map((img, idx) => (
+        <img 
+          key={img}
+          src={img} 
+          alt={title} 
+          className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
+            idx === currentIdx ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-105 pointer-events-none'
+          } group-hover:scale-110`}
+        />
+      ))}
+      
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent pointer-events-none z-10"></div>
+      
+      {/* Top Indicators */}
+      <div className="absolute top-6 left-6 flex gap-1.5 z-20 bg-black/10 backdrop-blur-sm px-2.5 py-1.5 rounded-full">
+        {images.map((_, idx) => (
+          <div 
+            key={idx}
+            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIdx ? 'w-5 bg-[#E6A23C]' : 'w-1.5 bg-white/40'}`}
+          />
+        ))}
+      </div>
+
+      {/* Caption Content */}
+      <div className="absolute bottom-6 left-6 right-16 z-10 text-left pointer-events-none">
+        <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-1.5 block">
+          {phase}
+        </span>
+        <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
+          {title}<br/>
+          <span className="text-sm md:text-base text-white/75 font-normal transition-all duration-300 block mt-1">
+            {descriptions[currentIdx]}
+          </span>
+        </h3>
+      </div>
+
+      {/* Left Arrow Button */}
+      <button 
+        onClick={handlePrev}
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/70 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-20 hover:scale-110 active:scale-95 border border-white/5 shadow-md"
+        aria-label="Previous image"
+      >
+        <span className="material-symbols-outlined text-[16px] -mr-0.5">arrow_back_ios_new</span>
+      </button>
+      
+      {/* Right Arrow Button */}
+      <button 
+        onClick={handleNext}
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/70 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-20 hover:scale-110 active:scale-95 border border-white/5 shadow-md"
+        aria-label="Next image"
+      >
+        <span className="material-symbols-outlined text-[16px]">arrow_forward_ios</span>
+      </button>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -50,81 +140,45 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-              {/* Card 1: Showroom 1 */}
-              <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
-                <img 
-                  src="/images/factory/exhibition/4.jpg" 
-                  alt="Premium Product Showroom" 
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
-                  <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Showroom
-                  </span>
-                  <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
-                    Premium Product Showroom<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">Bespoke wooden doors & whole-home joinery showcase</span>
-                  </h3>
-                </div>
-              </div>
+              <CapabilityCard 
+                images={['/images/factory/exhibition/4.jpg', '/images/factory/exhibition/3.jpg']}
+                phase="Showroom"
+                title="Premium Product Showroom"
+                descriptions={[
+                  'Bespoke wooden doors & whole-home joinery showcase',
+                  'Detailed craftsmanship and custom door panel designs'
+                ]}
+              />
 
-              {/* Card 2: Showroom 2 */}
-              <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
-                <img 
-                  src="/images/factory/exhibition/7.jpg" 
-                  alt="Whole-Home Joinery Showroom" 
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
-                  <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Showroom
-                  </span>
-                  <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
-                    Whole-Home Joinery Showroom<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">Immersive craftsmanship detailing & material gallery</span>
-                  </h3>
-                </div>
-              </div>
+              <CapabilityCard 
+                images={['/images/factory/exhibition/7.jpg', '/images/factory/exhibition/8.jpg']}
+                phase="Showroom"
+                title="Whole-Home Joinery Showroom"
+                descriptions={[
+                  'Immersive craftsmanship detailing & material gallery',
+                  'Bespoke cabinetry and integration display'
+                ]}
+              />
 
-              {/* Card 3: Exhibition 1 */}
-              <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
-                <img 
-                  src="/images/factory/visit/1.jpg" 
-                  alt="Global Industry Exhibition" 
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
-                  <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Exhibition
-                  </span>
-                  <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
-                    Global Industry Exhibition<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">Showcasing premium custom wood doors & windows worldwide</span>
-                  </h3>
-                </div>
-              </div>
+              <CapabilityCard 
+                images={['/images/factory/visit/1.jpg', '/images/factory/visit/展会和外国接待  (14).jpg']}
+                phase="Exhibition"
+                title="Global Industry Exhibition"
+                descriptions={[
+                  'Showcasing premium custom wood doors & windows worldwide',
+                  'Engaging with international delegates and builders'
+                ]}
+              />
 
-              {/* Card 4: Exhibition 2 */}
-              <div className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group/card cursor-pointer border border-gray-200">
-                <img 
-                  src="/images/factory/visit/2.jpg" 
-                  alt="International Client Consultations" 
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover/card:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6 z-10 text-left">
-                  <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-2 block">
-                    Exhibition
-                  </span>
-                  <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
-                    International Client Consultations<br/>
-                    <span className="text-sm md:text-base text-white/75 font-normal">Strategic trade consultations & negotiations with global builders</span>
-                  </h3>
-                </div>
-              </div>
+              <CapabilityCard 
+                images={['/images/factory/visit/2.jpg', '/images/factory/visit/展会和外国接待  (15).jpg']}
+                phase="Exhibition"
+                title="International Client Consultations"
+                descriptions={[
+                  'Strategic trade consultations & negotiations with global builders',
+                  'Introducing custom hardware and whole-home options to clients'
+                ]}
+              />
             </div>
 
             <div className="flex justify-center mt-12">

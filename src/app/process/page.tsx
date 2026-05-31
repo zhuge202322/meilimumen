@@ -5,68 +5,53 @@ import Link from 'next/link';
 
 const processes = [
   {
+    num: "01",
     phase: "Pre-Production",
+    title: "Estimating",
+    icon: "calculate",
+    desc: "According to customers’ door styles, sizes, materials and customized requirements, the factory calculates full costs including timber, hardware, labor, packaging and logistics and provides accurate quotations. Overseas clients suffer from inflated prices."
+  },
+  {
+    num: "02",
+    phase: "Pre-Production",
+    title: "Design & Customization",
     icon: "design_services",
-    steps: [
-      {
-        num: "1",
-        title: "Estimating",
-        desc: "According to customers’ door styles, sizes, materials and customized requirements, the factory calculates full costs including timber, hardware, labor, packaging and logistics and provides accurate quotations. Overseas clients suffer from inflated prices."
-      },
-      {
-        num: "2",
-        title: "Design & Customization",
-        desc: "Designers customize door structure, colors and processes and produce construction and renderings based on overseas building standards, local climates and customer aesthetics. Clients worry about non-compliant designs and big gap between renderings and real products. We adapt to international standards to ensure accurate design implementation."
-      }
-    ]
+    desc: "Designers customize door structure, colors and processes and produce construction and renderings based on overseas building standards, local climates and customer aesthetics. Clients worry about non-compliant designs and big gap between renderings and real products. We adapt to international standards to ensure accurate design implementation."
   },
   {
+    num: "03",
     phase: "Material & Production",
+    title: "Material Selection",
+    icon: "architecture",
+    desc: "We strictly select imported solid wood, eco-friendly boards and branded hardware, verify material certificates, environmental indicators and moisture-proof performance, and keep samples after purchasing. Overseas clients face inferior materials, unqualified environmental standards and inconsistent materials. We ensure full material traceability and quality."
+  },
+  {
+    num: "04",
+    phase: "Material & Production",
+    title: "Precision Production",
     icon: "precision_manufacturing",
-    steps: [
-      {
-        num: "3",
-        title: "Material Selection",
-        desc: "We strictly select imported solid wood, eco-friendly boards and branded hardware, verify material certificates, environmental indicators and moisture-proof performance, and keep samples after purchasing. Overseas clients face inferior materials, unqualified environmental standards and inconsistent materials. We ensure full material traceability and quality."
-      },
-      {
-        num: "4",
-        title: "Precision Production",
-        desc: "We conduct cutting, polishing, painting and assembly per confirmed drawings following foreign trade production standards to control flatness, tightness and paint quality. Overseas clients complain about rough workmanship, batch color difference and size errors. Standard assembly line operation ensures consistent batch product quality."
-      }
-    ]
+    desc: "We conduct cutting, polishing, painting and assembly per confirmed drawings following foreign trade production standards to control flatness, tightness and paint quality. Overseas clients complain about rough workmanship, batch color difference and size errors. Standard assembly line operation ensures consistent batch product quality."
   },
   {
+    num: "05",
     phase: "Inspection & Logistics",
-    icon: "local_shipping",
-    steps: [
-      {
-        num: "5",
-        title: "Quality Inspection",
-        desc: "Full inspection is carried out on finished products to check size accuracy, paint integrity, hardware operation and moisture resistance, with batch sampling and official quality reports. Clients face unstrict inspection, defective mixed loading and no formal certificates. We implement 100% full inspection to eliminate defective products."
-      },
-      {
-        num: "6",
-        title: "Global Logistics",
-        desc: "We adopt shockproof and moisture-proof export packaging, arrange customs declaration documents, cooperate with forwarders for booking and loading, and track logistics in real time. Clients suffer from package damage, customs delay and opaque logistics. Reinforced packaging, efficient customs clearance and real-time tracking ensure safe and on-time delivery."
-      }
-    ]
+    title: "Quality Inspection",
+    icon: "fact_check",
+    desc: "Full inspection is carried out on finished products to check size accuracy, paint integrity, hardware operation and moisture resistance, with batch sampling and official quality reports. Clients face unstrict inspection, defective mixed loading and no formal certificates. We implement 100% full inspection to eliminate defective products."
   },
   {
+    num: "06",
+    phase: "Inspection & Logistics",
+    title: "Global Logistics",
+    icon: "local_shipping",
+    desc: "We adopt shockproof and moisture-proof export packaging, arrange customs declaration documents, cooperate with forwarders for booking and loading, and track logistics in real time. Clients suffer from package damage, customs delay and opaque logistics. Reinforced packaging, efficient customs clearance and real-time tracking ensure safe and on-time delivery."
+  },
+  {
+    num: "07",
     phase: "After-Sales & Warranty",
+    title: "After-Sales Support",
     icon: "support_agent",
-    steps: [
-      {
-        num: "7",
-        title: "After-Sales Support",
-        desc: "We provide after-sales support including installation guidance, parts replacement and quality warranty after goods arrival, and respond to overseas consultations and feedback timely. Clients face delayed cross-border after-sales service and inefficient problem solving. We offer exclusive after-sales docking with all-weather response for quick solutions."
-      },
-      {
-        num: "8",
-        title: "Installation & Guidance",
-        desc: "We provide detailed cross-border installation manuals, video tutorials, and technical support to ensure seamless on-site assembly. Our products are backed by a comprehensive warranty, ensuring peace of mind and long-term durability for every home."
-      }
-    ]
+    desc: "We provide after-sales support including installation guidance, parts replacement and quality warranty after goods arrival, and respond to overseas consultations and feedback timely. Clients face delayed cross-border after-sales service and inefficient problem solving. We offer exclusive after-sales docking with all-weather response for quick solutions."
   }
 ];
 
@@ -91,7 +76,7 @@ export default function ProcessPage() {
           }
         });
       },
-      { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -5% 0px' }
     );
 
     itemRefs.current.forEach((el) => {
@@ -106,7 +91,7 @@ export default function ProcessPage() {
       <main className="w-full max-w-[1800px] mx-auto px-8 md:px-16 lg:px-24">
         
         {/* Header */}
-        <div className="flex justify-between items-end mb-16 border-b border-gray-300 pb-6">
+        <div className="flex justify-between items-end mb-12 border-b border-gray-300 pb-6">
           <div className="max-w-4xl">
             <h1 className="font-headline-md text-3xl lg:text-5xl text-[#1A1A1A] uppercase tracking-widest mb-6">
               Our Process
@@ -122,7 +107,7 @@ export default function ProcessPage() {
           {/* Central Line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gray-300 transform md:-translate-x-1/2 hidden md:block"></div>
 
-          <div className="space-y-12 md:space-y-24">
+          <div className="space-y-4 md:space-y-6">
             {processes.map((proc, index) => {
               const isEven = index % 2 === 0;
               const isRevealed = revealed[index];
@@ -156,24 +141,17 @@ export default function ProcessPage() {
 
                       {/* Step Number Background */}
                       <div className="absolute top-4 right-6 font-headline-xl text-6xl md:text-8xl text-neutral-100 pointer-events-none select-none font-bold">
-                        {String(index + 1).padStart(2, '0')}
+                        {proc.num}
                       </div>
 
-                      <h2 className="font-headline-md text-2xl text-[#BA1A1A] mb-8 relative z-10 font-bold tracking-wider uppercase border-b border-gray-100 pb-4">{proc.phase}</h2>
+                      <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#BA1A1A] mb-2 block">
+                        {proc.phase}
+                      </span>
+                      <h2 className="font-headline-md text-2xl text-black mb-4 font-bold">{proc.title}</h2>
 
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 relative z-10">
-                        {proc.steps.map((step, sIdx) => (
-                          <div key={sIdx} className={sIdx > 0 ? "border-t border-gray-100 pt-6 lg:border-t-0 lg:pt-0 lg:border-l lg:border-gray-100 lg:pl-8" : ""}>
-                            <h3 className="font-headline-sm text-lg text-[#1A1A1A] mb-3 font-bold flex items-center gap-2">
-                              <span className="text-sm bg-neutral-100 text-neutral-600 w-6 h-6 rounded-full flex items-center justify-center font-normal">{step.num}</span>
-                              {step.title}
-                            </h3>
-                            <p className="font-body-md text-[#555555] text-sm md:text-base leading-relaxed">
-                              {step.desc}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
+                      <p className="font-body-md text-[#555555] text-sm md:text-base leading-relaxed">
+                        {proc.desc}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -183,7 +161,7 @@ export default function ProcessPage() {
         </div>
 
         {/* Call to Action */}
-        <div className="mt-32 text-center">
+        <div className="mt-20 text-center">
           <h2 className="font-headline-md text-2xl md:text-3xl text-[#1A1A1A] mb-8">Ready to start your project?</h2>
           <Link href="/b2b-inquiry">
             <button className="bg-[#1A1A1A] text-white px-12 py-5 font-label-caps text-xs tracking-widest uppercase hover:bg-[#BA1A1A] transition-colors duration-300 inline-flex items-center gap-3 rounded-none">

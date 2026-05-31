@@ -17,7 +17,7 @@ const slides = [
   {
     image: '/img/hnew-3.jpg',
     title: 'Crafting the Soul of Your Home',
-    subtitle: '批量集中进货，价格以5折作为优惠。 / Bulk purchasing with up to 50% off discount.'
+    subtitle: 'Bulk purchasing with up to 50% off discount.'
   }
 ];
 

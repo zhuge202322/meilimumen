@@ -114,7 +114,7 @@ export default function Footer() {
           <h4 className="font-label-caps text-xs font-bold mb-6 uppercase tracking-wider">Contact Info</h4>
           <ul className="space-y-4 font-body-md text-sm text-[#4A4A4A] pr-4">
             <li>Email: info@BrySun.com</li>
-            <li>Phone: +86 19017111088 (潘丽华)</li>
+            <li>Phone: +86 19017111088 (潘丽华 / Lihua Pan)</li>
             <li className="leading-relaxed">Address: Room 501, Building 33, No. 157 Minzu Avenue, Qingxiu District, Nanning City, Guangxi Province, China</li>
           </ul>
         </div>
