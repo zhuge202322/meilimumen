@@ -50,7 +50,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
           <div className="order-2 lg:order-1 relative aspect-[4/5] w-full bg-[#1A1A1A] rounded-none overflow-hidden">
             <img 
-              src="/images/factory/工厂照片/6.jpg" 
+              src="/images/factory/工厂照片/8.jpg" 
               alt="Craftsmanship" 
               className="w-full h-full object-cover opacity-90"
             />
