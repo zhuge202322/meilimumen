@@ -26,6 +26,7 @@ function ProductDetailContent() {
     const currentProduct = localProducts.find(p => p.id === id);
     if (currentProduct) {
       setProduct(currentProduct);
+      setActiveImageIndex(0);
       
       // Calculate Related Products
       const otherProducts = localProducts.filter(p => p.id !== currentProduct.id);
@@ -58,7 +59,6 @@ function ProductDetailContent() {
     );
   }
 
-  const allImages = [...product.images, ...product.detailImages];
   const priceDisplay = 'Custom Quote';
 
   const handleAddToCart = () => {
@@ -101,14 +101,14 @@ function ProductDetailContent() {
               <img 
                 alt={product.name} 
                 className="object-cover w-full h-full transition-transform duration-[2000ms] group-hover:scale-105 opacity-90" 
-                src={allImages[activeImageIndex] || '/images/products/门/13.png'}
+                src={product.images[activeImageIndex] || '/images/products/门/13.png'}
               />
             </div>
             
             {/* Thumbnails */}
-            {allImages.length > 1 && (
+            {product.images.length > 1 && (
               <div className="grid grid-cols-6 gap-2">
-                {allImages.slice(0, 12).map((img, idx) => (
+                {product.images.map((img, idx) => (
                   <div 
                     key={idx} 
                     onClick={() => setActiveImageIndex(idx)}
@@ -183,6 +183,26 @@ function ProductDetailContent() {
             </div>
           </div>
         </section>
+
+        {/* Product Details (Infographic Detail Images) Section */}
+        {product.detailImages && product.detailImages.length > 0 && (
+          <section className="mb-16">
+            <h2 className="font-headline-md text-3xl md:text-4xl text-[#1A1A1A] uppercase tracking-widest mb-10 border-b border-gray-300 pb-4">
+              Product Details
+            </h2>
+            <div className="max-w-4xl mx-auto flex flex-col gap-6">
+              {product.detailImages.map((img, idx) => (
+                <div key={idx} className="w-full bg-[#1A1A1A]/5 border border-black/10 overflow-hidden rounded-none shadow-sm">
+                  <img 
+                    alt={`${product.name} Detail ${idx + 1}`} 
+                    className="w-full h-auto object-cover opacity-95 hover:opacity-100 transition-opacity duration-500" 
+                    src={img}
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Related Products Grid */}
         {relatedProducts.length > 0 && (

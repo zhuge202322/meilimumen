@@ -48,9 +48,20 @@ export default function CraftsmanshipGallery() {
           <Link 
             key={category.id}
             href={`/products?category=${category.slug}`} 
-            className={`craft-card ${layoutClass} group relative overflow-hidden cursor-pointer ambient-shadow-hover bg-surface-container opacity-0 translate-y-24 transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)]`}
+            className={`craft-card ${layoutClass} group relative overflow-hidden cursor-pointer ambient-shadow-hover bg-white opacity-0 translate-y-24 transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)]`}
           >
-            <img alt={category.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105" src={imageUrl}/>
+            {/* Blurred background to fill any gaps seamlessly with matching color tones */}
+            <img 
+              alt="" 
+              className="absolute inset-0 w-full h-full object-cover filter blur-2xl scale-110 opacity-30 select-none pointer-events-none" 
+              src={imageUrl}
+            />
+            {/* Main image rendered in full containing bounds without cropping */}
+            <img 
+              alt={category.name} 
+              className="absolute inset-0 w-full h-full object-contain transition-transform duration-[2000ms] group-hover:scale-105" 
+              src={imageUrl}
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-90"></div>
             <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full z-10">
               <h3 className="font-headline-md text-2xl md:text-4xl tracking-wider uppercase text-white mb-1">{category.name}</h3>
