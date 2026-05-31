@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroCarousel from '@/components/HeroCarousel';
 import AboutUs from '@/components/AboutUs';
 import ScrollArtGallery from '@/components/ScrollArtGallery';
@@ -17,6 +17,19 @@ interface CapabilityCardProps {
 
 function CapabilityCard({ images, phase, title, descriptions }: CapabilityCardProps) {
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
+  // Prevent background scroll when lightbox is open
+  useEffect(() => {
+    if (isLightboxOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isLightboxOpen]);
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -29,70 +42,133 @@ function CapabilityCard({ images, phase, title, descriptions }: CapabilityCardPr
   };
 
   const handleCardClick = () => {
-    setCurrentIdx((prev) => (prev + 1) % images.length);
+    setIsLightboxOpen(true);
   };
 
   return (
-    <div 
-      onClick={handleCardClick}
-      className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group hover:shadow-xl transition-shadow cursor-pointer border border-gray-200 select-none"
-    >
-      {/* Images with transition */}
-      {images.map((img, idx) => (
-        <img 
-          key={img}
-          src={img} 
-          alt={title} 
-          className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
-            idx === currentIdx ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-105 pointer-events-none'
-          } group-hover:scale-110`}
-        />
-      ))}
-      
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent pointer-events-none z-10"></div>
-      
-      {/* Top Indicators */}
-      <div className="absolute top-6 left-6 flex gap-1.5 z-20 bg-black/10 backdrop-blur-sm px-2.5 py-1.5 rounded-full">
-        {images.map((_, idx) => (
-          <div 
-            key={idx}
-            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIdx ? 'w-5 bg-[#E6A23C]' : 'w-1.5 bg-white/40'}`}
+    <>
+      <div 
+        onClick={handleCardClick}
+        className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group hover:shadow-xl transition-shadow cursor-pointer border border-gray-200 select-none"
+      >
+        {/* Images with transition */}
+        {images.map((img, idx) => (
+          <img 
+            key={img}
+            src={img} 
+            alt={title} 
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
+              idx === currentIdx ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-105 pointer-events-none'
+            } group-hover:scale-110`}
           />
         ))}
-      </div>
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent pointer-events-none z-10"></div>
+        
+        {/* Top Indicators */}
+        <div className="absolute top-6 left-6 flex gap-1.5 z-20 bg-black/10 backdrop-blur-sm px-2.5 py-1.5 rounded-full">
+          {images.map((_, idx) => (
+            <div 
+              key={idx}
+              className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIdx ? 'w-5 bg-[#E6A23C]' : 'w-1.5 bg-white/40'}`}
+            />
+          ))}
+        </div>
 
-      {/* Caption Content */}
-      <div className="absolute bottom-6 left-6 right-16 z-10 text-left pointer-events-none">
-        <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-1.5 block">
-          {phase}
-        </span>
-        <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
-          {title}<br/>
-          <span className="text-sm md:text-base text-white/75 font-normal transition-all duration-300 block mt-1">
-            {descriptions[currentIdx]}
+        {/* Caption Content */}
+        <div className="absolute bottom-6 left-6 right-16 z-10 text-left pointer-events-none">
+          <span className="text-xs md:text-sm font-semibold uppercase tracking-widest text-[#E6A23C] mb-1.5 block">
+            {phase}
           </span>
-        </h3>
+          <h3 className="text-lg md:text-2xl font-bold text-white leading-snug">
+            {title}<br/>
+            <span className="text-sm md:text-base text-white/75 font-normal transition-all duration-300 block mt-1">
+              {descriptions[currentIdx]}
+            </span>
+          </h3>
+        </div>
+
+        {/* Left Arrow Button */}
+        <button 
+          onClick={handlePrev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/70 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-20 hover:scale-110 active:scale-95 border border-white/5 shadow-md"
+          aria-label="Previous image"
+        >
+          <span className="material-symbols-outlined text-[16px] -mr-0.5">arrow_back_ios_new</span>
+        </button>
+        
+        {/* Right Arrow Button */}
+        <button 
+          onClick={handleNext}
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/70 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-20 hover:scale-110 active:scale-95 border border-white/5 shadow-md"
+          aria-label="Next image"
+        >
+          <span className="material-symbols-outlined text-[16px]">arrow_forward_ios</span>
+        </button>
       </div>
 
-      {/* Left Arrow Button */}
-      <button 
-        onClick={handlePrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/70 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-20 hover:scale-110 active:scale-95 border border-white/5 shadow-md"
-        aria-label="Previous image"
-      >
-        <span className="material-symbols-outlined text-[16px] -mr-0.5">arrow_back_ios_new</span>
-      </button>
-      
-      {/* Right Arrow Button */}
-      <button 
-        onClick={handleNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/70 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-20 hover:scale-110 active:scale-95 border border-white/5 shadow-md"
-        aria-label="Next image"
-      >
-        <span className="material-symbols-outlined text-[16px]">arrow_forward_ios</span>
-      </button>
-    </div>
+      {/* Lightbox Modal */}
+      {isLightboxOpen && (
+        <div 
+          onClick={() => setIsLightboxOpen(false)}
+          className="fixed inset-0 bg-black/95 backdrop-blur-md flex items-center justify-center z-50 transition-opacity duration-300 animate-fade-in"
+        >
+          {/* Close button */}
+          <button 
+            onClick={() => setIsLightboxOpen(false)}
+            className="absolute top-6 right-6 w-12 h-12 bg-white/10 hover:bg-[#BA1A1A] hover:text-white text-white rounded-full flex items-center justify-center transition-all duration-300 z-50 border border-white/10"
+            aria-label="Close lightbox"
+          >
+            <span className="material-symbols-outlined text-2xl">close</span>
+          </button>
+
+          {/* Left Arrow inside Lightbox */}
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentIdx((prev) => (prev - 1 + images.length) % images.length);
+            }}
+            className="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-12 bg-white/5 hover:bg-[#BA1A1A] hover:text-white text-white flex items-center justify-center transition-all duration-300 z-50 border border-white/10"
+            aria-label="Previous image"
+          >
+            <span className="material-symbols-outlined text-xl">arrow_back_ios_new</span>
+          </button>
+
+          {/* Active Image */}
+          <div 
+            onClick={(e) => e.stopPropagation()} 
+            className="relative max-w-[90vw] max-h-[85vh] flex flex-col items-center justify-center select-none"
+          >
+            <img 
+              src={images[currentIdx]} 
+              alt={title} 
+              className="max-w-full max-h-[70vh] object-contain shadow-2xl border border-white/10 bg-black/40"
+            />
+            {/* Legend inside Lightbox */}
+            <div className="mt-4 text-center text-white/90 max-w-2xl px-4">
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#E6A23C] mb-1 block">
+                {phase}
+              </span>
+              <p className="text-lg md:text-xl font-bold">{title}</p>
+              <p className="text-sm text-white/60 mt-1">{descriptions[currentIdx]}</p>
+            </div>
+          </div>
+
+          {/* Right Arrow inside Lightbox */}
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentIdx((prev) => (prev + 1) % images.length);
+            }}
+            className="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-12 bg-white/5 hover:bg-[#BA1A1A] hover:text-white text-white flex items-center justify-center transition-all duration-300 z-50 border border-white/10"
+            aria-label="Next image"
+          >
+            <span className="material-symbols-outlined text-xl">arrow_forward_ios</span>
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 
