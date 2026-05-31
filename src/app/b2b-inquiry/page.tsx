@@ -59,7 +59,7 @@ export default function B2BInquiry() {
 
             {/* Small Factory Image Accent */}
             <div className="relative aspect-[4/3] w-full bg-[#1A1A1A] overflow-hidden rounded-none hidden lg:block">
-              <img src="/images/factory/工厂照片/5.jpg" alt="Craftsmanship detail" className="w-full h-full object-cover opacity-80" />
+              <img src="/images/factory/工厂照片/9.jpg" alt="Craftsmanship detail" className="w-full h-full object-cover opacity-80" />
             </div>
 
           </div>

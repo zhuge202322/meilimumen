@@ -49,7 +49,7 @@ function CapabilityCard({ images, phase, title, descriptions }: CapabilityCardPr
     <>
       <div 
         onClick={handleCardClick}
-        className="relative aspect-[16/10] bg-neutral-100 overflow-hidden shadow-lg group hover:shadow-xl transition-shadow cursor-pointer border border-gray-200 select-none"
+        className="relative aspect-[4/3] bg-neutral-100 overflow-hidden shadow-lg group hover:shadow-xl transition-shadow cursor-pointer border border-gray-200 select-none"
       >
         {/* Images with transition */}
         {images.map((img, idx) => (
