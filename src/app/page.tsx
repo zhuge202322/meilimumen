@@ -258,7 +258,7 @@ export default function Home() {
             </div>
 
             <div className="flex justify-center mt-12">
-              <Link href="/product-detail">
+              <Link href="/process">
                 <button className="bg-primary text-on-primary font-label-caps text-base md:text-lg px-12 py-5 ambient-shadow-hover hover:bg-primary/95 transition-all tracking-widest uppercase">
                   Explore our factory-direct collection of custom solid wood solutions, built to elevate every detail of your home.
                 </button>
